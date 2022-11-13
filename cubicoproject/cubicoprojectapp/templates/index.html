@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cúbico, Consultores & Constructores</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+        
+    <link 
+        rel="stylesheet" 
+        href="{% static 'tablet.css' %}" 
+        media="screen and (min-width: 540px)">
+        <link 
+        rel="stylesheet" 
+        href="{% static 'desktop.css' %}" 
+        media="screen and (min-width: 834px)">
+
+        <!--Fuente-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+    </head>
+    <body>
+    {% include "navbar.html" %}
+    <main> 
+        <section class="banner_container">
+        <div class="banner">
+            <h1>Cúbico, Consultores & Contructores</h1>
+            <h2>Tu opción ideal</h2>
+            <a class="banner_button" href="#info_cubico">Descubre nuestros servicios<span></span></a>
+            
+        </div>
+    </section>
+        
+
+
+        <div class="services_background" id="info_cubico"> 
+            <h1>Ofrecemos los mejores servicios</h1>  
+            <hr>
+            <section class="services_container">
+            
+            <div class="servicecard_container">
+                <div class="card_index" id="sc1">
+                <div class="card_opacity">
+                    <div class="card_text">
+                    <h3>Diseño</h3>
+                    </div>
+                </div>
+                </div>
+                <ul> 
+                <li>Elaboración de Proyectos civiles y electromecánicos            </li>
+                <li>Asesoramiento Específico</li>
+                <li>Diseño de Interiores.</li>
+                </ul>  
+            </div>
+
+            <div class="servicecard_container">
+                <div class="card_index" id="sc2">
+                <div class="card_opacity">
+                    <div class="card_text">
+                    <h3>Construcción</h3>
+                    </div>
+                </div>
+                </div>
+                <ul> 
+                <li>Obra Civil: Edificación.</li>
+                <li>Restauración. </li>
+                <li>Obra electromecánica: Construcción media, baja y alta tensión aérea y subterránea.</li>
+                </ul>
+            </div>
+
+            <div class="servicecard_container">
+                <div class="card_index" id="sc3">
+                <div class="card_opacity">
+                    <div class="card_text">
+                    <h3>Mantenimiento</h3>
+                    </div>
+                </div>
+                </div>
+                <ul>
+                <li>Conservación de Instalaciones.</li>
+                <li>Mantenimiento Preventivo.</li>
+                <li>Conservación de Inmuebles.</li>
+                </ul>
+            </div>
+
+            </section>
+            
+            <div id="Contact_access_container">
+            <a href="./contacto.html">¡SOLICITAR AHORA UNA COTIZACIÓN!</a>
+            </div>
+        </div>
+        
+        
+        <div class="nosotros_main_container">
+            <h1>Conoce nuestro profesionalismo</h1>
+            <hr>
+            <div class="nosotros_container">
+            <div class="nosotros_info_container">
+                <p>
+                Somos una empresa comprometida con otorgar la mejor calidad
+                posible en el área de la construción civil y electromecánica. 
+                ¡Expertos en lo que hacemos!
+                </p>
+                <a href="./nosotros.html">Conocer más</a>
+            </div>
+            <figure class="about_us_i_img">
+                <!---Imágen desde CSS-->    
+            </figure>
+            </div>
+        </div>
+
+        <div class="nosotros_main_container">
+            <h1>Proyectos</h1>
+            <hr>
+            <div class="project_container">
+            <div class="nosotros_info_container">
+                <p>
+                En Cúbico, Consultores & Constructores disfrutamos mostrar
+                al mundo nuestras últimas contribuciones. Nuestro portafolio de trabajo 
+                nos respalda.
+                </p>
+                <a href="./galeria.html">Conocer más</a>
+            </div>
+            <figure class="project_us_i_img">
+                <!---Imágen desde CSS-->    
+            </figure>
+            </div>
+        </div>
+
+
+        </section>
+
+        
+        </main>
+
+        {% include "footer.html" %}
+    </body>
+</html>

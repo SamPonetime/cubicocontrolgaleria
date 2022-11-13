@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  
+
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Cúbico, Consultores & Constructores</title>
+   {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}" />
+      
+  <link 
+      rel="stylesheet" 
+      href="{% static 'tablet.css' %}" 
+      media="screen and (min-width: 540px)">
+      <link 
+      rel="stylesheet" 
+      href="{% static 'desktop.css' %}" 
+      media="screen and (min-width: 834px)">
+
+    <!--Fuente-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+   
+ </head>
+ <body>
+  {% include "navbar.html" %}
+
+   <main>
+     
+
+    <div class="contactdata_container">
+      <article class="socialm_container">
+        <h1>Contáctanos</h1>
+        <p>
+          Si deseas consultar mayor información sobre nuestros servicios, realizar una cotización o tienes alguna duda, te invitamos a escribirnos y uno
+          de nuestros asesores le contactará a la brevedad.
+        </p>  
+        <h2>Inicie un chat directo vía WhatsApp</h2>
+        <a href= "https://api.whatsapp.com/send?phone=529611771231"><img src="{% static 'images/whatsapplogofull.png' %}" width="120" height="120" alt="Acceso directo a Whatsapp"></a>
+        <p> Tel. 9611771231 </p>
+      </article>
+      <article class="form_container">
+          <h1>¿Quiere saber más?</h1>
+         
+          <form class ="formulario" id="formulario">
+            <input type="text" name="name" id="name" placeholder="Nombre completo" autocomplete="name" >       
+            <input type="email" name="email" id="email" placeholder="Correo electrónico (ejemplo: correo@outlook.com)" autocomplete="email">
+            <input type="number" name="cellphone" id="cellphone" placeholder="Ingrese su número telefónico" autocomplete="tel">
+            <textarea name="message" id="message"rows="5" maxlength="450" placeholder="Déjenos saber tus comentarios o dudas" ></textarea>
+             
+            <input type="submit" id="button" value="Enviar" >
+            <p class="warnings" id="warnings"></p> <!--Mensajes de error con javascript-->
+          </form>
+
+      </article>
+    </div>
+    <section class="contact_img_main_container">
+      <div class="contact_img_data">
+        <h2>Somos los mejores en el rubro.</h2>
+        <h3>"Edifica tu vida, construye tus sueños"</h3>
+      </div>
+    </section>
+   </main>
+   
+   {% include "footer.html" %}
+
+  <script src= "{% static './app.js' %}"></script>´
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript"> emailjs.init('j5NJjvxN8N4_RVQ6_')</script>
+
+</body>
+</html>

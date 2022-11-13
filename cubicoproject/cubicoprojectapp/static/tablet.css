@@ -1,0 +1,84 @@
+/*BARRA DE NAVEGACIÓN*/
+.navbar_container {
+    line-height: 1.5rem;
+    justify-content: space-between;  
+}
+
+.nav_menu {
+  width: 100%;
+}
+
+.nav_item{
+  flex:1 0 10%;
+}
+
+
+/*---INICIO.HTML*/
+.nosotros_container{
+  flex-direction: row;
+   margin: 15px 55px;
+  
+}
+.nosotros_info_container{
+  align-items:center;
+  justify-content: space-around;
+  gap: 30px;
+  
+}
+ 
+.about_us_i_img{
+  width: 555px;
+  height: 250px;
+  padding: 0 33px;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  background-image: url('../images/corporativetablet.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.project_us_i_img{
+  width: 555px;
+  height: 250px;
+  padding: 0 33px;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  background-image: url('../images/residenciaproyectotablet.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.project_container{
+   
+  flex-direction:row-reverse; 
+  margin: 15px 55px;
+ }
+
+
+
+/*BANNER EN INDEX*/
+.banner_container{
+  background-image: url('../images/banner1_tablet.jpg');
+}
+
+@keyframes move_banner{
+    
+  49%{
+    background-image: url('../images/banner2_tablet.jpg')
+  }
+  
+  100%{
+    background-image: url('../images/banner1_tablet.jpg')
+  }
+  
+}
+
+/*BANNER EN CONTACTO.HTML*/
+.contact_img_main_container{
+  background-image: url('../images/construccion_contacto_tablet.jpg');
+}
+.contact_img_data h3{
+  font-size: 2rem;
+ }

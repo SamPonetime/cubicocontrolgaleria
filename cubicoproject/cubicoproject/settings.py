@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'gestionGaleria',
+    'cubicoprojectapp',##
 
 ]
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'cubicoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [r'C:\cubicocontrolgaleria\cubicoproject\cubicoprojectapp\templates'],#Todas mis plantillas en este directorio
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +65,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+
+
             ],
         },
     },

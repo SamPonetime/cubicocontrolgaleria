@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  
+
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Cúbico, Consultores & Constructores</title>
+   {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}" />
+      
+  <link 
+      rel="stylesheet" 
+      href="{% static 'tablet.css' %}" 
+      media="screen and (min-width: 540px)">
+      <link 
+      rel="stylesheet" 
+      href="{% static 'desktop.css' %}" 
+      media="screen and (min-width: 834px)">
+
+    <!--Fuente-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+   
+ </head>
+ <body>
+   
+  {% include "navbar.html" %}
+
+   <main>
+      <div class="about_us_main_container">
+       <div class="about_us_img">
+          <!---Imágen desde CSS-->
+           
+        </div>
+        <div class="about_us_info">
+          <h1>¿Quienes somos?</h1>
+          <h2>Una empresa que piensa en grande</h2>      
+          <p>En Cubico, Consultores & Constructores, trabajamos cada día para brindar el mejor servicio de construcción civil y electromecánico, de la mano del
+             personal más capacitado y todas las herramientas necesarias para crear una obra de calidad. Segura y funcional. Buscamos convertirnos en la opción
+             número 1 de los clientes y el mejor ejemplo de calidad de vida en el trabajo con los mejores esfuerzos.   
+        </div>
+      </div>
+ 
+      <div class="mv_main_container">
+        <article class="art_container"> 
+          <img src="./images/visionlogo.png" width="60" height="60" alt="Logo de visión">
+          <h2>Visión</h2>
+          <p> 
+            Ser una empresa líder en construcción y consultoría, reconocida por su capacidad, calidad y cumplimiento de las más exigentes normas de seguridad;
+            utilizando procedimientos constructivos innovadores. En el que todos nuestros proveedores y empleados estén contentos de ser parte de nuestro equipo
+            de trabajo.
+          </p>
+        </article>
+        <article article class="art_container"> 
+          <img src="./images/misionlogo.png" width="60" height="60" alt="Logo de misión">
+          <h2>Misión</h2>
+          <p>
+            Nuestra misión empresarial es garantizar el servicio deseado en el menor tiempo posible y con el mejor equipo de trabajo. 
+            Ofrecemos distintas modalidades para construir sus obras, asesoría y supervisión. De esta forma no solo conseguiremos éxito y reconocimiento en 
+            nuestro sector del mercado sino que además, ganaremos clientes satisfechos que recomienden nuestros servicios en un futuro cercano.
+          </p>
+        </article>
+      </div>
+
+      <div>
+          <article class="story_container">
+            <h1>El comienzo de nuestra historia</h1>
+            <hr>
+            <p>
+              Esta constructora fue constituida formalmente el 3 de Enero del año 2019, bajo las leyes de la República Mexicana fundada con el objetivo de satisfacer 
+              las necesidades de integrar en una sola compañía experiencia en las áreas de construcción de obras civiles y obras electromecánicas. 
+              Nuestro compromiso es continuar con el proceso de mejora continua en todos nuestros contratos, para optimizar más aún todas nuestras actividades.
+              Nuestro éxito está construido sobre tres pilares fundamentales: calidad en los trabajos, eficiencia en tiempos de entrega y competitividad en precios
+              de construcción. Cubico, Consultores & Constructores cuenta con los recursos para la ejecución de sus obras y posee un personal en la construcción de más de 20 años de experiencia en planificación y ejecución.
+
+            </p>
+          </article>
+      </div>
+
+
+      <div id="value_background"> 
+        <h2>Nuestros valores nos distinguen</h2>
+           
+        <section class="values_container">
+          <div class="card" style="background-image: url('./images/1.jpg')">
+            <div class="card_text">
+              <h3>Respeto y empatía</h3>
+              <p>La compañía reconoce el valor de cada miembro de su equipo de trabajo y cliente, por esa razón, les brinda el mejor trato, con empatía y respeto.</p>
+            </div>
+          </div>
+
+          <div class="card" style="background-image: url('./images/2.jpg')">
+            <div class="card_text">
+              <h3>Eficiencia</h3>
+              <p>Ponemos todo el esfuerzo necesario para mejorar la productividad y eficiencia
+                en todas las áreas de nuestro negocio, reduciendo nuestros costos y mejorando
+                nuestros márgenes de producción. El objetivo de este valor es garantizar 
+                nuestra competitividad en las nuevas circunstancias del mercado.</p>
+            </div>
+          </div>
+          
+          <div class="card" style="background-image: url('./images/3.jpg')">
+            <div class="card_text">
+              <h3>Integridad</h3>
+              <p>Usamos los más altos estándares en las labores que ejecutamos de modo individual y colectivo, empleando ante todo la honestidad y trasparencia
+                en nuestros procesos.</p>
+            </div>
+          </div>
+
+          <div class="card" style="background-image: url('./images/4.jpg')">
+            <div class="card_text">
+              <h3>Pasión</h3>
+              <p>Cada contrato que tomamos lo hacemos con la mejor disposición y las mejores ganas de ofrecer un buen servicio. Entendemos que la pasión es 
+                imprescindible al momento de realizar nuestras labores.</p>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+      
+
+   </main>
+   
+   {% include "footer.html" %}
+
+ </body>
+</html>

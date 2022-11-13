@@ -1,0 +1,162 @@
+
+/*BARRA DE NAVEGACIÓN*/
+.navbar_container {
+    justify-content: space-between;
+    padding: 10px 0;
+    margin: 0 auto 0 auto;
+  }
+ 
+ .nav_menu {
+    width: auto;
+  }
+
+.logo{
+    margin: 0 0 0 20px;
+ }
+
+/*----INDEX-----*/
+.services_container{
+  flex-direction: row;
+  margin: 0 55px;
+  gap: 15px;
+}
+
+.servicecard_container{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--off_White);
+  margin: 20px 0;
+  border-radius: 5px;
+  width: 33.3%;
+}
+.card_index{
+  height: 200px;
+}
+
+.nosotros_info_container{
+  width: 50%;
+} 
+.nosotros_info_container a{
+  width: 30%;
+} 
+.about_us_i_img{
+
+  background-image: url('../images/corporativedesktop.jpg');
+  
+}
+
+.project_us_i_img{
+ 
+  background-image: url('../images/residenciaproyectodesktop.jpg');
+ 
+}
+
+
+/*---------NOSOTROS-----------*/
+.about_us_main_container{
+  flex-direction: row;
+    
+}
+
+.about_us_img{
+  margin-right: auto;
+  margin-left:auto;
+  width:  400px;
+  height: 380px;
+  background-image: url('../images/nosotrosprincipal_desktop.png');
+  
+}
+
+.about_us_info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%; /*Dividir a la mitad*/ 
+  margin: 0 auto;
+}
+
+.about_us_info h1, .about_us_info h2{
+  text-align: left;
+  margin-left: 5px;
+  padding-left: 0;
+  margin-right: 5px;
+  }
+
+.about_us_info p{
+    text-align: justify;
+    margin-left: 5px;
+    padding-left: 0;
+    margin-right: 5px;
+   }
+    
+ /* Mision y Vision en NOSOTROS.HTML*/
+.mv_main_container{
+  display: flex;
+  flex-wrap:wrap;
+  max-width: 1000px;
+  gap: 50px;
+  border-radius: 15px;
+  margin: 0 auto; 
+  margin-top: 70px;
+  margin-bottom: 50px;
+
+}
+.art_container{
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+/*Contenedor valores*/
+.values_container{
+  display: flex;
+  flex-direction: row; 
+  margin: 10px 30px;
+  gap: 30px; 
+ }
+#value_background{
+  padding: 55px;
+  
+}
+.card{
+  width: 100%;
+  
+ }
+
+
+
+ /*CONTACTO.HTML*/
+.form_container{
+  margin: 20px 65px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+ 
+   
+ 
+ /*BANNER EN CONTACTO.HTML*/
+ .contact_img_main_container{
+  background-image: url('../images/construccion_contacto_desktop.jpg');  
+}
+
+.contactdata_container{
+  background-color: var(--third_color);
+  flex-direction: row;
+}
+
+/*BANNER EN INDEX*/
+.banner_container{
+  background-image: url('../images/banner1_desktop.jpg');
+}
+
+@keyframes move_banner{
+    
+  49%{
+    background-image: url('../images/banner2_desktop.jpg')
+  }
+  
+  100%{
+    background-image: url('../images/banner1_desktop.jpg')
+  }
+  
+}
