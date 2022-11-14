@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 
 from cubicoprojectapp.views import index,contacto,nosotros, projects #
-
+from django.conf import settings #
+from django.conf.urls.static import static #
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +29,5 @@ urlpatterns = [
     path('galeria/',projects, name="Galeria"),
  
 ]
+
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#Url y raiz

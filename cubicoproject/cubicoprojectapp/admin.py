@@ -7,6 +7,8 @@ from cubicoprojectapp.models import galeria_proyectos
 class GaleriaAdmin(admin.ModelAdmin):
     list_display=("nombre","descripcion") #Lo que debe mostrar en el listado de la tabla
     search_fields=("nombre","descripcion") #Puede filtrar busquedas en relación a..
+    readonly_fields=('created','updated') #Solo lectura
+ 
   #  list_filter=("fechasubida",)
 
 # Modelos aquí.
