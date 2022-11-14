@@ -28,8 +28,7 @@
  </head>
  <body>
    
-  {% include "navbar.html" %}
-
+  {% include "cubicoprojectapp/navbar.html" %}
    <main>
       <div class="about_us_main_container">
        <div class="about_us_img">
@@ -47,7 +46,7 @@
  
       <div class="mv_main_container">
         <article class="art_container"> 
-          <img src="./images/visionlogo.png" width="60" height="60" alt="Logo de visión">
+          <img src="{% static 'images/visionlogo.png' %}" width="60" height="60" alt="Logo de visión">
           <h2>Visión</h2>
           <p> 
             Ser una empresa líder en construcción y consultoría, reconocida por su capacidad, calidad y cumplimiento de las más exigentes normas de seguridad;
@@ -56,7 +55,7 @@
           </p>
         </article>
         <article article class="art_container"> 
-          <img src="./images/misionlogo.png" width="60" height="60" alt="Logo de misión">
+          <img src="{% static 'images/misionlogo.png' %}" width="60" height="60" alt="Logo de misión">
           <h2>Misión</h2>
           <p>
             Nuestra misión empresarial es garantizar el servicio deseado en el menor tiempo posible y con el mejor equipo de trabajo. 
@@ -86,14 +85,14 @@
         <h2>Nuestros valores nos distinguen</h2>
            
         <section class="values_container">
-          <div class="card" style="background-image: url('./images/1.jpg')">
+          <div class="card" id="nc1">
             <div class="card_text">
               <h3>Respeto y empatía</h3>
               <p>La compañía reconoce el valor de cada miembro de su equipo de trabajo y cliente, por esa razón, les brinda el mejor trato, con empatía y respeto.</p>
             </div>
           </div>
 
-          <div class="card" style="background-image: url('./images/2.jpg')">
+          <div class="card" id="nc2">
             <div class="card_text">
               <h3>Eficiencia</h3>
               <p>Ponemos todo el esfuerzo necesario para mejorar la productividad y eficiencia
@@ -103,7 +102,7 @@
             </div>
           </div>
           
-          <div class="card" style="background-image: url('./images/3.jpg')">
+          <div class="card" id="nc3">
             <div class="card_text">
               <h3>Integridad</h3>
               <p>Usamos los más altos estándares en las labores que ejecutamos de modo individual y colectivo, empleando ante todo la honestidad y trasparencia
@@ -111,7 +110,7 @@
             </div>
           </div>
 
-          <div class="card" style="background-image: url('./images/4.jpg')">
+          <div class="card" id="nc4">
             <div class="card_text">
               <h3>Pasión</h3>
               <p>Cada contrato que tomamos lo hacemos con la mejor disposición y las mejores ganas de ofrecer un buen servicio. Entendemos que la pasión es 
@@ -126,7 +125,6 @@
 
    </main>
    
-   {% include "footer.html" %}
-
+   {% include "cubicoprojectapp/footer.html" %}
  </body>
 </html>

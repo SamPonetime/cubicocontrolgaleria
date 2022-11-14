@@ -249,7 +249,21 @@ background-image: url('../images/service3.jpg');
   padding: 77px 0;
   transition: 0.3s;
  }
+ #nc1{
+  background-image: url('../images/1.jpg')"
+  } 
+  #nc2{
+  background-image: url('../images/2.jpg')"
+   }
+  #nc3{
+  background-image: url('../images/3.jpg'); 
+  }
+  #nc4{
+    background-image: url('../images/4.jpg'); 
+  } 
 
+    
+  
 .card_opacity:hover{
   padding: 33px 0; 
   opacity: 80%;
