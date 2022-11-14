@@ -22,9 +22,9 @@ from cubicoprojectapp.views import index,contacto,nosotros, projects #
 urlpatterns = [
     path('admin/', admin.site.urls),
    #
-    path('inicio/',index),
-    path('contacto/',contacto),
-    path('nosotros/',nosotros),
-    path('galeria/',projects),
+    path('inicio/',index, name="Inicio"),
+    path('contacto/',contacto, name="Contacto"),
+    path('nosotros/',nosotros, name="Nosotros"),
+    path('galeria/',projects, name="Galeria"),
  
 ]
