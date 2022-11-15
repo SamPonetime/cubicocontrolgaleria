@@ -6,8 +6,14 @@
 
    <main>
     
+    {% for proyectin in proyectos%}
+
+    <p><img src="{{proyectin.imagen.url}}"></p>
+    <h1>{{proyectin.nombre}}</h1>
+    <p>{{proyectin.descripcion}}</p>
 
 
+    {% endfor%}
    </main>
    
   
