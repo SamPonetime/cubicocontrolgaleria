@@ -32,7 +32,7 @@
   padding: 0 33px;
   margin: 0 auto;
   margin-bottom: 0px;
-  background-image: url('../images/corporativetablet.jpg');
+  background-image: url( '/static/images/corporativemobile.jpg' );
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -44,7 +44,8 @@
   padding: 0 33px;
   margin: 0 auto;
   margin-bottom: 0px;
-  background-image: url('../images/residenciaproyectotablet.jpg');
+  background-image: url( '/static/images/residenciaproyectotablet.jpg' );
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -60,24 +61,31 @@
 
 /*BANNER EN INDEX*/
 .banner_container{
-  background-image: url('../images/banner1_tablet.jpg');
+  background-image: url( '/static/images/banner1_tablet.jpg' )
+  /*url('../images/banner1_tablet.jpg');*/
+  
 }
 
 @keyframes move_banner{
     
   49%{
-    background-image: url('../images/banner2_tablet.jpg')
+    background-image: url( '/static/images/banner2_tablet.jpg' )
+    /*background-image: url('../images/banner2_tablet.jpg')*/
   }
   
   100%{
-    background-image: url('../images/banner1_tablet.jpg')
+    background-image: url( '/static/images/banner1_tablet.jpg' )
+
+    /*background-image: url('../images/banner1_tablet.jpg')*/
   }
   
 }
 
 /*BANNER EN CONTACTO.HTML*/
 .contact_img_main_container{
-  background-image: url('../images/construccion_contacto_tablet.jpg');
+  background-image: url( '/static/images/construccion_contacto_tablet.jpg' );
+
+  /*background-image: url('../images/construccion_contacto_tablet.jpg');*/
 }
 .contact_img_data h3{
   font-size: 2rem;

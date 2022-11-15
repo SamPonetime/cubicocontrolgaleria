@@ -41,13 +41,14 @@
 } 
 .about_us_i_img{
 
-  background-image: url('../images/corporativedesktop.jpg');
-  
+  background-image: url( '/static/images/corporativedesktop.jpg' );
+
 }
 
 .project_us_i_img{
  
-  background-image: url('../images/residenciaproyectodesktop.jpg');
+  background-image: url( '/static/images/residenciaproyectodesktop.jpg' );
+
  
 }
 
@@ -63,8 +64,8 @@
   margin-left:auto;
   width:  400px;
   height: 380px;
-  background-image: url('../images/nosotrosprincipal_desktop.png');
-  
+  background-image: url( '/static/images/nosotrosprincipal_desktop.png' );
+/* background-image: url('../images/nosotrosprincipal_desktop.png');*/
 }
 
 .about_us_info{
@@ -136,7 +137,8 @@
  
  /*BANNER EN CONTACTO.HTML*/
  .contact_img_main_container{
-  background-image: url('../images/construccion_contacto_desktop.jpg');  
+  background-image: url( '/static/images/construccion_contacto_desktop.jpg' );
+  /*background-image: url('../images/construccion_contacto_desktop.jpg');*/ 
 }
 
 .contactdata_container{
@@ -146,17 +148,20 @@
 
 /*BANNER EN INDEX*/
 .banner_container{
-  background-image: url('../images/banner1_desktop.jpg');
+  background-image: url( '/static/images/banner1_tablet.jpg' )
+  /*background-image: url('../images/banner1_desktop.jpg');*/
 }
 
 @keyframes move_banner{
     
   49%{
-    background-image: url('../images/banner2_desktop.jpg')
+    background-image: url( '/static/images/banner2_desktop.jpg' )
+    /*background-image: url('../images/banner2_desktop.jpg')*/
   }
   
   100%{
-    background-image: url('../images/banner1_desktop.jpg')
+    background-image: url( '/static/images/banner1_desktop.jpg' )
+    /*background-image: url('../images/banner1_desktop.jpg')*/
   }
   
 }

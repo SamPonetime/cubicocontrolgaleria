@@ -8,7 +8,10 @@
         <div class="banner">
             <h1>Cúbico, Consultores & Contructores</h1>
             <h2>Tu opción ideal</h2>
-            <a class="banner_button" href="#info_cubico">Descubre nuestros servicios<span></span></a>
+            <a class="banner_button" href="#info_cubico">Descubre nuestros servicios
+                <span  >
+                </span>
+            </a>
             
         </div>
     </section>
@@ -68,7 +71,7 @@
             </section>
             
             <div id="Contact_access_container">
-            <a href="./contacto.html">¡SOLICITAR AHORA UNA COTIZACIÓN!</a>
+            <a href="{% url 'Contacto' %}">¡SOLICITAR AHORA UNA COTIZACIÓN!</a>
             </div>
         </div>
         
@@ -83,7 +86,7 @@
                 posible en el área de la construción civil y electromecánica. 
                 ¡Expertos en lo que hacemos!
                 </p>
-                <a href="./nosotros.html">Conocer más</a>
+                <a href="{% url 'Nosotros' %}">Conocer más</a>
             </div>
             <figure class="about_us_i_img">
                 <!---Imágen desde CSS-->    
@@ -101,7 +104,7 @@
                 al mundo nuestras últimas contribuciones. Nuestro portafolio de trabajo 
                 nos respalda.
                 </p>
-                <a href="./galeria.html">Conocer más</a>
+                <a href="{% url 'Galeria' %}">Conocer más</a>
             </div>
             <figure class="project_us_i_img">
                 <!---Imágen desde CSS-->    
