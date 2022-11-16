@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from cubicoprojectapp.models import galeria_proyectos
 
-
 # Create your views here.
 def index(request): #primera vista
 
@@ -20,6 +19,6 @@ def contacto(request): #tercera vista
 
 
 def projects(request):
-    proyectos=galeria_proyectos.objects.all() #imporatar todos los registros de galeria_proyectos
-    return render(request,"cubicoprojectapp/projects.html", {"proyectos":proyectos}) #faltaría un tercer argumento con el contexto(diccionario)
+    proyectos=galeria_proyectos.objects.all() #importar todos los registros de galeria_proyectos
+    return render(request,"cubicoprojectapp/projects.html", {"proyecto":proyectos}) #solicitud, plantilla y contexto(diccionario)
  

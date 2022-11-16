@@ -30,4 +30,4 @@ urlpatterns = [
  
 ]
 
-urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#Url y raiz
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#Url y raiz, para acceso a las imagenes
