@@ -5,18 +5,30 @@
  <body>
 
    <main>
-    
-    {% for proyectin in proyecto%}
-    <div>
-      <p><img src="{{proyectin.imagen.url}}"></p>
-      <h1>{{proyectin.nombre}}</h1>
-      <p>{{proyectin.descripcion}}</p>
-    </div>
-
-    {% endfor%}
-   </main>
-   
   
- </body>
+    <div class="projects_background" id="info_cubico"> 
+      <h1>Nuestros Proyectos...</h1>  
+      <hr>
+      <div class="galeria_container"> 
+       
+       {% for proyectin in proyecto%}
+      
+      <div class="projectcard_container">
+        
+          <div class="card_projects">
+            <img src="{{proyectin.imagen.url}}" width="320px" height="220px" alt="Proyecto de Cúbico">
+          </div>
+          <section> 
+            <h2>{{proyectin.nombre}}</h2>
+            <p>{{proyectin.descripcion}}</p>
+          </section>  
+
+      </div>
+         
+       {% endfor%}
+    </div>
+    </div>
+</main>
+</body>
  
 {% endblock %}

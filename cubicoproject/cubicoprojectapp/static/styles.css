@@ -650,6 +650,41 @@ flex-direction: column;
   transform: scale(0.7);
 } 
 
+/*-------GALERIA------------*/
+.projects_background{
+  background-color: var(--primary_color);
+  padding: 55px 0;
+  text-align: center;
+  color: var(--off_White);
+ }
+ 
+ .card_projects{
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+
+  overflow:hidden;
+ 
+ }
+ 
+  .projectcard_container{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 15%;
+  }
+ 
+  .projectcard_container section{
+    padding: 10px 0;
+    text-align: center;
+  }
+  .projectcard_container p{
+    text-align: center;
+  }
+
+  .galeria_container{
+    display: flex;
+    flex-direction: column-reverse;
+  }
 /*-------FOOTER------------*/
 footer {
   display: flex;

@@ -90,3 +90,22 @@
 .contact_img_data h3{
   font-size: 2rem;
  }
+
+ /*GALERIA*/
+ .galeria_container{
+  display: flex;
+  flex-direction: row;
+ }
+ .projectcard_container{
+  margin: 20px 0;
+   
+}
+.galeria_container{
+  flex-direction: row-reverse;
+  overflow: scroll;
+  
+}
+ 
+.galeria_container section{
+  padding: 5px 10px;
+}
