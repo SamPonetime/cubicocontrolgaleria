@@ -13,11 +13,6 @@ def nosotros(request): #segunda vista
 
     
 
-def contacto(request): #tercera vista
-
-    return render(request,"cubicoprojectapp/contacto.html")
-
-
 def projects(request):
     proyectos=galeria_proyectos.objects.all() #importar todos los registros de galeria_proyectos
     return render(request,"cubicoprojectapp/projects.html", {"proyecto":proyectos}) #solicitud, plantilla y contexto(diccionario)

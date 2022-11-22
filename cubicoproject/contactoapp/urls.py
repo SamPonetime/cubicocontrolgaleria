@@ -15,21 +15,16 @@ Including another URLconf
 """
 from django.urls import path
 
-from cubicoprojectapp import views #
-
-from django.conf import settings # Para cargar imagenes del proyecto
-from django.conf.urls.static import static #Para cargar imagenes del proyecto
-
+from contactoapp import views #
+ 
 urlpatterns = [
     
-   #
-     path('',views.index, name="Inicio"),
-     
-     path('nosotros/',views.nosotros, name="Nosotros"),
-     path('galeria/',views.projects, name="Galeria"),
+ 
+     path('contacto/',views.contacto, name="Contacto"),
+
+ 
 
   
 
 ]
-
-urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#Url y raiz, para acceso a las imagenes
+ 

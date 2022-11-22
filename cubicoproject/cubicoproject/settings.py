@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'cubicoprojectapp',##
+    'contactoapp',
 
 ]
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'cubicoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\cubicocontrolgaleria\cubicoproject\cubicoprojectapp\templates'],#Todas mis plantillas en este directorio
+        'DIRS': [r'C:\cubicocontrolgaleria\cubicoproject'],#Todas mis plantillas en este directorio
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

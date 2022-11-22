@@ -16,21 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-#from cubicoprojectapp.views import index,contacto,nosotros, projects #
-#from django.conf import settings #
-#from django.conf.urls.static import static #
+ 
 
 urlpatterns = [
      path('admin/', admin.site.urls),
-   #
-   # path('inicio/',index, name="Inicio"),
-   # path('contacto/',contacto, name="Contacto"),
-   # path('nosotros/',nosotros, name="Nosotros"),
-   # path('galeria/',projects, name="Galeria"),
+   path('', include('contactoapp.urls')),
     path('', include('cubicoprojectapp.urls')),
+     
      
      
 
 ]
-
-#urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#Url y raiz, para acceso a las imagenes
+ 

@@ -13,17 +13,17 @@
        
        {% for proyectin in proyecto%}
       
-      <div class="projectcard_container">
-        
-          <div class="card_projects">
-            <img src="{{proyectin.imagen.url}}" width="320px" height="220px" alt="Proyecto de Cúbico">
-          </div>
-          <section> 
-            <h2>{{proyectin.nombre}}</h2>
-            <p>{{proyectin.descripcion}}</p>
-          </section>  
+        <div class="projectcard_container">
+          
+            <div class="card_projects">
+              <img src="{{proyectin.imagen.url}}" width="320px" height="220px" alt="Proyecto de Cúbico">
+            </div>
+            <section> 
+              <h2>{{proyectin.nombre}}</h2>
+              <p>{{proyectin.descripcion}}</p>
+            </section>  
 
-      </div>
+        </div>
          
        {% endfor%}
     </div>
