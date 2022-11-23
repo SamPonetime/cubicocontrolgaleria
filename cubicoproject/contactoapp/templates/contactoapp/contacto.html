@@ -13,8 +13,14 @@
           de nuestros asesores le contactará a la brevedad.
         </p>  
         <h2>Inicie un chat directo vía WhatsApp</h2>
-        <a href= "https://api.whatsapp.com/send?phone=529611771231"><img src="{% static 'images/whatsapplogofull.png' %}" width="120" height="120" alt="Acceso directo a Whatsapp"></a>
-        <p> Tel. 9611771231 </p>
+
+
+  
+
+        <a href= "https://api.whatsapp.com/send?phone=52{{cubicodato.telefono}}"><img src="{% static 'images/whatsapplogofull.png' %}" width="120" height="120" alt="Acceso directo a Whatsapp"></a>
+        <p> Tel. {{cubicodato.telefono}} </p>
+
+     
       </article>
       <article class="form_container">
           <h1>¿Quiere saber más?</h1>

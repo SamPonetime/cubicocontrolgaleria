@@ -10,4 +10,7 @@ class galeria_proyectos(models.Model):
     updated=models.DateTimeField(auto_now_add=True,verbose_name="Modificación")
 
     def __str__(self):
-        return self.nombre #Método Devuelve el "nombre" del proyecto para utilizarlo cmo titulo (listado y vista individual)
+        return self.nombre #Método Devuelve el "nombre" del proyecto para utilizarlo como titulo (listado y vista individual)
+
+
+ 
