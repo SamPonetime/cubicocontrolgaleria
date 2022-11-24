@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from cubicoprojectapp.models import galeria_proyectos
 
-from contactoapp.models import cubico_dato 
-
+ 
 # Create your views here.
 def index(request): #primera vista
 
@@ -20,6 +19,6 @@ def projects(request):
     return render(request,"cubicoprojectapp/projects.html", {"proyecto":proyectos}) #solicitud, plantilla y contexto(diccionario)
 
 
-
  
+
  

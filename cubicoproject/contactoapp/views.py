@@ -10,3 +10,4 @@ def contacto(request): #tercera vista
     return render(request,"contactoapp/contacto.html", {"cubicodato":cubico_contacto}) #solicitud, plantilla y contexto(diccionario)
 
 
+ 
