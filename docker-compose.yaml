@@ -1,0 +1,46 @@
+version: '3'
+services:
+  ############
+  #  Django  #
+  ############
+  web:
+    build: .
+    command: sh -c "python manage.py migrate &&
+                    python manage.py runserver 0.0.0.0:8000" 
+    environment:
+      # -- DNS PARAMS --
+      - VIRTUAL_HOST=cubicoconsultoresconstructores.com, www.cubicoconsultoresconstructores.com
+      - VIRTUAL_PORT=8000
+      - LETSENCRYPT_HOST=cubicoconsultoresconstructores.com, www.cubicoconsultoresconstructores.com
+    restart: unless-stopped
+    networks:
+      - default
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  ############
+  # Postgres #
+  ############
+  db:
+    image: postgres:12.0
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=administrador17
+      - POSTGRES_DB=ProyeGale
+    networks:
+      - default
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    external:
+      name: net-proxy
