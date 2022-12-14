@@ -518,6 +518,7 @@ background-image: url( '/static/images/service1.jpg' );
 }
 
 .form_container p{
+  margin-bottom: 10px;
   font-size: 1.5rem;
 }
 
@@ -582,6 +583,19 @@ flex-direction: column;
   padding: 10px 0;
 }
 
+.opc{
+  font-size: 1.3rem;
+ }
+.opc input{
+  margin: 0 5px;
+}
+ 
+.formulario label{
+  margin-top: 20px;
+}
+#box{
+  display:none;
+}
 /*-Imagen final en CONTACTO-*/
 .contact_img_main_container{
   width: 100%;

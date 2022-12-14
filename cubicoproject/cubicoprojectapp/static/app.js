@@ -1,12 +1,25 @@
-const nombre = document.getElementById("name")
-const correo = document.getElementById("email")
-const telefono = document.getElementById("cellphone")
-const mensaje = document.getElementById("message")
-const formulario = document.getElementById("formulario")
-const advertencias = document.getElementById("warnings")
+const nombre = document.getElementById("name");
+const correo = document.getElementById("email");
+const telefono = document.getElementById("cellphone");
+const mensaje = document.getElementById("message");
+const formulario = document.getElementById("formulario");
+const advertencias = document.getElementById("warnings");
   
 const btn = document.getElementById('button');
 
+const checkbox = document.getElementById('show');
+const a_mostrar = document.getElementById('box');
+
+//Mostrar adjuntar archivo
+checkbox.addEventListener('click', function handleClick() {
+    if (checkbox.checked) {
+        a_mostrar.style.display = 'block';
+    } else {
+        a_mostrar.style.display = 'none';
+    }
+  });
+
+//Validaciones y envío de correo
 formulario.addEventListener('submit', function(event) {
     event.preventDefault();
     
@@ -19,7 +32,7 @@ formulario.addEventListener('submit', function(event) {
         warnings += 'El nombre ingresado no es válido <br>'
         entrar = true
     }
-    if(!regexEmail.test(email.value)){
+    if(!regexEmail.test(correo.value)){
         warnings += 'El email no es válido <br>'
         entrar = true
     }

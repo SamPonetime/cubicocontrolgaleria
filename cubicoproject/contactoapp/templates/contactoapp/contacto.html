@@ -35,11 +35,20 @@
           <h1>¿Quiere saber más?</h1>
          
           <form class ="formulario" id="formulario">
+          
+            
             <input type="text" name="name" id="name" placeholder="Nombre completo" autocomplete="name" >       
             <input type="email" name="email" id="email" placeholder="Correo electrónico (ejemplo: correo@outlook.com)" autocomplete="email">
             <input type="number" name="cellphone" id="cellphone" placeholder="Ingrese su número telefónico" autocomplete="tel">
-            <textarea name="message" id="message"rows="5" maxlength="450" placeholder="Déjenos saber tus comentarios o dudas" ></textarea>
-             
+            <textarea name="message" id="message"rows="5" maxlength="450" placeholder="Déjenos saber tus comentarios" ></textarea>
+            
+            <label><input type="checkbox" id="show" value="first_checkbox"> Necesito cotizar mi proyecto</label>
+            
+            <div id="box"><!--a mostrar-->
+              <p>Adjunte archivo:</p>
+              <input type="file" name="my_file"> 
+            </div>
+
             <input type="submit" id="button" value="Enviar" >
             <p class="warnings" id="warnings"></p> <!--Mensajes de error con javascript-->
           </form>
