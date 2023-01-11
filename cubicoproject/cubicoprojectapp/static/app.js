@@ -43,7 +43,6 @@ formulario.addEventListener('submit', function(event) {
     if(mensaje.value==""){
         warnings += 'El campo "Mensaje" no puede estar vacío'
         entrar = true
-   
     }
  
     if(!entrar){ 
@@ -56,7 +55,7 @@ formulario.addEventListener('submit', function(event) {
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
             btn.value = 'Enviar';
-            alert('¡Tu correo ha sido enviado!');
+            alert('Hemos recibido tu mensaje y responderemos en un plazo no mayor a 24 horas hábiles');
             }, (err) => {
             btn.value = 'Enviar';
             alert(JSON.stringify(err));
@@ -66,7 +65,7 @@ formulario.addEventListener('submit', function(event) {
         advertencias.innerHTML = warnings 
     }
 
-   
+
     
  });  
 

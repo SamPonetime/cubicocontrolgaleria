@@ -709,7 +709,7 @@ flex-direction: column;
   height:100vh;
   top:0;
   left:0;
-  background-color:rgba(0,0,0,0.90);
+  background-color:rgb(0, 0, 0);
 }
 
 .card_projects img{ /*para que la imagen no se afecte con el fondo negro*/
@@ -776,7 +776,6 @@ footer section {
 .left hr{
   border-color:var(--third_color);
   background-color: var(--third_color);
-  opacity:0.5;
   margin: 0;
   width: 100px;
 }
