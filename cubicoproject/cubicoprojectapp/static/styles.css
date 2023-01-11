@@ -777,6 +777,7 @@ footer section {
   border-color:var(--third_color);
   background-color: var(--third_color);
   margin: 0;
+  opacity: 100%;
   width: 100px;
 }
 .left li {
