@@ -1,0 +1,32 @@
+{% load static %}
+
+<head>
+  <title>Inicio de Sesión</title>
+</head>
+
+ <body>
+   <main>
+     
+    <div class="contactdata_container">
+      
+        <h1>Iniciar sesión</h1>
+    
+      <article class="form_container">
+       
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        
+        <form method="post">
+            {% csrf_token %}
+             
+            <input type="text" name="username" id="username" placeholder="Usuario" autocomplete="username" >       
+            <input type="password" name="password" id="password" placeholder="Contraseña">
+            <input type="submit" id="button" value="Iniciar sesión" >
+
+        </form>
+      </article>
+
+   </main>
+    
+</body>
