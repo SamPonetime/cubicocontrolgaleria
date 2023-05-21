@@ -1,19 +1,17 @@
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login
- 
-# Create your views here.
-def login(request): #  vista
+from django.contrib.auth.views import LoginView
+from django.shortcuts import render, redirect
 
- if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('custom_dashboard')  # Redirige a la página de inicio personalizada
-        else:
-            # El usuario no está autenticado, muestra un mensaje de error
-            error_message = 'Nombre de usuario o contraseña incorrectos.'
-            return render(request, 'login_app/login.html', {'error_message': error_message})
- else:
-        return render(request, 'login_app/login.html')
+class CustomLoginView(LoginView):
+    template_name = 'login_app/login.html'
+    
+    def form_valid(self, form):
+        user = form.get_user()
+        login(self.request, user)
+        return redirect('custom_dashboard')
+    
+    def form_invalid(self, form):
+        error_message = 'Invalid username or password.'
+        return render(self.request, self.template_name, {'error_message': error_message})
+
+ 

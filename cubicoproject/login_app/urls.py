@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.urls import path
 
-from login_app import views #
+from .views import CustomLoginView
  
 urlpatterns = [
     
  
-     path('login/',views.login, name="Login"),
+    path('login/', CustomLoginView.as_view(), name='Login'),
       
  
 
