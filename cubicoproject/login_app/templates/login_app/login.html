@@ -2,31 +2,29 @@
 
 <head>
   <title>Inicio de Sesión</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
 </head>
 
- <body>
-   <main>
-     
-    <div class="contactdata_container">
-      
-        <h1>Iniciar sesión</h1>
-    
-      <article class="form_container">
-       
-        {% if error_message %}
-            <p>{{ error_message }}</p>
-        {% endif %}
-        
+<body>
+  <main>
+    <div class="container">
+      <img src="{% static 'images/logocubico.png' %}" width="150" height="60" alt="Logo de Cúbico" id="logo" oncontextmenu="return false">
+
+      <h1>Iniciar sesión</h1>
+      <article class="form-group">
         <form method="post">
-            {% csrf_token %}
-             
-            <input type="text" name="username" id="username" placeholder="Usuario" autocomplete="username" >       
-            <input type="password" name="password" id="password" placeholder="Contraseña">
-            <input type="submit" id="button" value="Iniciar sesión" >
-
+          {% csrf_token %}
+          <input type="text" name="username" id="username" class="input-field" placeholder="Usuario" autocomplete="username">
+          <input type="password" name="password" id="password" class="input-field" placeholder="Contraseña">
+          <div class="button-container">
+            <input type="submit" id="button" value="Iniciar sesión">
+        
+          </div>
         </form>
+            {% if error_message %}
+            <p>Credenciales inválidas. Por favor, verifica tus datos.</p>
+            {% endif %}
       </article>
-
-   </main>
-    
+    </div>
+  </main>
 </body>
