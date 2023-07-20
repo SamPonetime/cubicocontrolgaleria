@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 class CustomLoginView(LoginView):
     template_name = 'login_app/login.html'
@@ -15,8 +16,8 @@ class CustomLoginView(LoginView):
         return render(self.request, self.template_name, {'error_message': error_message})
 
 
-   #Una vez se inicie sesión 
+@login_required
 def custom_dashboard_view(request):
-    # Aquí puedes agregar la lógica para cargar los datos del panel personalizado
-    # y renderizar la plantilla correspondiente
-     return render(request, 'login_app/custom_dashboard.html')
+    username = request.user.username
+    context = {'username': username}
+    return render(request, 'login_app/custom_dashboard.html', context)
