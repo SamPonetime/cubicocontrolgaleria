@@ -14,4 +14,9 @@ class CustomLoginView(LoginView):
         error_message = 'Invalid username or password.'
         return render(self.request, self.template_name, {'error_message': error_message})
 
- 
+
+   #Una vez se inicie sesión 
+def custom_dashboard_view(request):
+    # Aquí puedes agregar la lógica para cargar los datos del panel personalizado
+    # y renderizar la plantilla correspondiente
+     return render(request, 'login_app/custom_dashboard.html')
