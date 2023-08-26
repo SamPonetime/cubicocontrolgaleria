@@ -26,7 +26,11 @@ urlpatterns = [
  
     path('custom_dashboard/', views.custom_dashboard_view, name='custom_dashboard'),  
  
+    path('agregar_proyecto/', views.agregar_proyecto, name='agregar_proyecto'),  
+  
+    path('detalle_proyecto/<int:proyecto_id>/', views.detalle_proyecto, name='detalle_proyecto'),
 
+    path('editar_proyecto/<int:proyecto_id>/', views.editar_proyecto, name='editar_proyecto'),
   
 
 ]

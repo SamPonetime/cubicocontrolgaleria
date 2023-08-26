@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Proyecto</title>
+</head>
+<body>
+    <h1>Editar Proyecto</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!--trae todo el formulario para editar-->
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    
+    <a href="{% url 'detalle_proyecto' proyecto.id %}">Cancelar</a>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle de Proyecto</title>
+</head>
+<body>
+    <h1>Detalle del Proyecto</h1>
+     <!--  campos del proyecto -->
+    <h2>{{ proyecto.nombre }}</h2>
+    <p>Ubicación: {{ proyecto.ubicacion }}</p>
+    <p>Cliente: {{ proyecto.cliente }}</p>
+    <p>Presupuesto: {{ proyecto.presupuesto }}</p>
+    <p>Fecha de Inicio: {{ proyecto.fecha_inicio }}</p>
+    <p>Fecha de Fin: {{ proyecto.fecha_fin }}</p>
+   
+    <a href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
+    
+    <a href="{% url 'custom_dashboard' %}">Volver al Dashboard</a>
+</body>
+</html>

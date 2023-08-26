@@ -13,5 +13,18 @@
       <h1>Sesion iniciada</h1>
       <h2>¡Bienvenido, {{username}}!</h2>
     </div>
+
+     <!-- Enlace para agregar un nuevo proyecto -->
+     <a href="{% url 'agregar_proyecto' %}">Agregar Nuevo Proyecto</a>
+    
+     <!-- Sección de Listado de Proyectos -->
+    <h3>Listado de Proyectos</h3>
+    <ul>
+        {% for proyecto in proyectos %}
+            <li><a href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a></li>
+        {% empty %}
+            <li>No hay proyectos registrados.</li>
+        {% endfor %}
+    </ul>
   </main>
 </body>
