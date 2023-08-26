@@ -22,12 +22,9 @@ class CustomLoginView(LoginView):
 @login_required # asegura que el usuario esté autenticado antes de acceder a la vista
 def custom_dashboard_view(request):
     username = request.user.username
-    context = {'username': username}
-    return render(request, 'login_app/custom_dashboard.html', context)
-
-def custom_dashboard_view(request):
     proyectos = Proyecto.objects.all()
-    return render(request, 'login_app/custom_dashboard.html', {'proyectos': proyectos})
+    context = {'username': username, 'proyectos': proyectos}
+    return render(request, 'login_app/custom_dashboard.html', context)
 
 
 def agregar_proyecto(request):
