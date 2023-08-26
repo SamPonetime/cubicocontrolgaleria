@@ -63,3 +63,11 @@ def editar_proyecto(request, proyecto_id):
         form = ProyectoForm(instance=proyecto)
     
     return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto})
+
+
+def eliminar_proyecto(request, proyecto_id):
+    proyecto = get_object_or_404(Proyecto, id=proyecto_id)
+    if request.method == 'POST':
+        proyecto.delete()
+        return redirect('custom_dashboard')
+    return render(request, 'login_app/eliminar_proyecto.html', {'proyecto': proyecto})

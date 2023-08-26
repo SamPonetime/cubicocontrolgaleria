@@ -14,7 +14,7 @@
     <p>Fecha de Fin: {{ proyecto.fecha_fin }}</p>
    
     <a href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
-    
+    <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar Proyecto</a>
     <a href="{% url 'custom_dashboard' %}">Volver al Dashboard</a>
 </body>
 </html>
