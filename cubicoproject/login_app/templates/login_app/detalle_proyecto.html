@@ -40,6 +40,10 @@
                 {% csrf_token %}
                 <input type="checkbox" name="tarea_{{ tarea.id }}" {% if tarea.completada %}checked{% endif %} onchange="this.form.submit()">
                 {{ tarea.titulo }}
+                <br>
+                {{ tarea.descripcion }}
+                <br>
+                Fecha de Vencimiento: {{ tarea.fecha_vencimiento }}
             </form>
         </li>
         {% endfor %}
@@ -50,6 +54,10 @@
         {% for tarea in tareas_completadas %}
         <li>
             {{ tarea.titulo }}
+            <br>
+            {{ tarea.descripcion }}
+            <br>
+            Fecha de Vencimiento: {{ tarea.fecha_vencimiento }}
         </li>
         {% endfor %}
     </ul>
