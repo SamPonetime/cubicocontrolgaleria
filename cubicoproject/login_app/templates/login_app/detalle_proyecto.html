@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Detalle del Proyecto</h1>
-     <!--  campos del proyecto -->
+    <!-- Campos del proyecto -->
     <h2>{{ proyecto.nombre }}</h2>
     <p>Ubicación: {{ proyecto.ubicacion }}</p>
     <p>Cliente: {{ proyecto.cliente }}</p>
@@ -16,5 +16,42 @@
     <a href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
     <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar Proyecto</a>
     <a href="{% url 'custom_dashboard' %}">Volver al Dashboard</a>
+
+    <h2>Agregar Tarea</h2>
+
+    <!-- Formulario para agregar nueva tarea -->
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo"><br>
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion"></textarea><br>
+        <label for="fecha_vencimiento">Fecha de Vencimiento:</label>
+        <input type="date" name="fecha_vencimiento"><br>
+        <button type="submit">Agregar Tarea</button>
+    </form>
+
+    <h2>Tareas Pendientes</h2>
+    <ul>
+        {% for tarea in tareas_pendientes %}
+        <li>
+            <!-- Formulario para marcar tareas como completadas -->
+            <form method="post" action="{% url 'marcar_completada' tarea.id %}">
+                {% csrf_token %}
+                <input type="checkbox" name="tarea_{{ tarea.id }}" {% if tarea.completada %}checked{% endif %} onchange="this.form.submit()">
+                {{ tarea.titulo }}
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Tareas Completadas</h2>
+    <ul>
+        {% for tarea in tareas_completadas %}
+        <li>
+            {{ tarea.titulo }}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

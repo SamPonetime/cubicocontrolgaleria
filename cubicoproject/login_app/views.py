@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Proyecto
+from .models import Proyecto, Tarea
 from .forms import ProyectoForm  # formulario
 
 
@@ -45,8 +45,33 @@ def agregar_proyecto(request):
     
 
 def detalle_proyecto(request, proyecto_id):
-  proyecto = get_object_or_404(Proyecto, id=proyecto_id)
-  return render(request, 'login_app/detalle_proyecto.html', {'proyecto': proyecto})
+    proyecto = get_object_or_404(Proyecto, id=proyecto_id)
+    tareas_pendientes = Tarea.objects.filter(proyecto=proyecto, completada=False)
+    tareas_completadas = Tarea.objects.filter(proyecto=proyecto, completada=True)
+
+    if request.method == 'POST':
+        for tarea in tareas_pendientes:
+            tarea_id = str(tarea.id)
+            if tarea_id in request.POST:
+                tarea.completada = True
+                tarea.save()
+
+        titulo = request.POST.get('titulo')
+        descripcion = request.POST.get('descripcion')
+        fecha_vencimiento = request.POST.get('fecha_vencimiento')
+
+        tarea_nueva = Tarea(
+            proyecto=proyecto,
+            titulo=titulo,
+            descripcion=descripcion,
+            fecha_vencimiento=fecha_vencimiento,
+            completada=False  # Nueva tarea creada como pendiente
+        )
+        tarea_nueva.save()
+
+        return redirect('detalle_proyecto', proyecto_id=proyecto_id)
+
+    return render(request, 'login_app/detalle_proyecto.html', {'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
 
 def editar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
@@ -68,3 +93,9 @@ def eliminar_proyecto(request, proyecto_id):
         proyecto.delete()
         return redirect('custom_dashboard')
     return render(request, 'login_app/eliminar_proyecto.html', {'proyecto': proyecto})
+
+def marcar_tarea_completada(request, tarea_id):
+    tarea = get_object_or_404(Tarea, id=tarea_id)
+    tarea.completada = not tarea.completada
+    tarea.save()
+    return redirect('detalle_proyecto', proyecto_id=tarea.proyecto.id)

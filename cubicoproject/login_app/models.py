@@ -8,3 +8,14 @@ class Proyecto(models.Model):
     presupuesto = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
+
+#tareas dentro de cada proyecto
+class Tarea(models.Model):
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE) #si se elimina un proyecto, todas las tareas relacionadas con ese proyecto también se eliminarán. 
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    fecha_vencimiento = models.DateField()
+    completada = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.titulo
