@@ -50,28 +50,35 @@ def detalle_proyecto(request, proyecto_id):
     tareas_completadas = Tarea.objects.filter(proyecto=proyecto, completada=True)
 
     if request.method == 'POST':
-        for tarea in tareas_pendientes:
-            tarea_id = str(tarea.id)
-            if tarea_id in request.POST:
-                tarea.completada = True
-                tarea.save()
+        # Manejar la carga de archivos de planos y contratos
+        if 'planos' in request.FILES:
+            proyecto.planos = request.FILES['planos']
+        
+        if 'contratos' in request.FILES:
+            proyecto.contratos = request.FILES['contratos']
 
         titulo = request.POST.get('titulo')
         descripcion = request.POST.get('descripcion')
         fecha_vencimiento = request.POST.get('fecha_vencimiento')
 
-        tarea_nueva = Tarea(
-            proyecto=proyecto,
-            titulo=titulo,
-            descripcion=descripcion,
-            fecha_vencimiento=fecha_vencimiento,
-            completada=False  # Nueva tarea creada como pendiente
-        )
-        tarea_nueva.save()
+        # Comprobar si se proporcionó un título antes de crear la tarea
+        if titulo:
+            tarea_nueva = Tarea(
+                proyecto=proyecto,
+                titulo=titulo,
+                descripcion=descripcion,
+                fecha_vencimiento=fecha_vencimiento,
+                completada=False  # Nueva tarea creada como pendiente
+            )
+            tarea_nueva.save()
+
+        # Ahora, guarda los cambios en el modelo Proyecto
+        proyecto.save()
 
         return redirect('detalle_proyecto', proyecto_id=proyecto_id)
 
     return render(request, 'login_app/detalle_proyecto.html', {'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
+ 
 
 def editar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)

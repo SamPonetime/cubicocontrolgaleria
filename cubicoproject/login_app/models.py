@@ -8,6 +8,11 @@ class Proyecto(models.Model):
     presupuesto = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
+ # Campos para planos y contratos
+    planos = models.FileField(upload_to='planos/', blank=True, null=True)
+    contratos = models.FileField(upload_to='contratos/', blank=True, null=True)
+
+
 
 #tareas dentro de cada proyecto
 class Tarea(models.Model):

@@ -61,5 +61,19 @@
         </li>
         {% endfor %}
     </ul>
+
+    <h2>Subir Planos</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="planos">
+            <button type="submit">Subir Planos</button>
+        </form>
+
+    <h2>Subir Contratos</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="contratos">
+            <button type="submit">Subir Contratos</button>
+        </form>
 </body>
 </html>
