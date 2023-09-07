@@ -47,51 +47,84 @@
     flex-direction: column;
     gap: 10px; /* Espacio vertical entre los elementos */
     margin: 15px;
+
    }
 
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1.6rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .button-container {
-    text-align: center;
-  }
-  
-  .button-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
+button{
+
+    background: #2f3031;
+    border-radius: 5px;
+    color:white;
+    padding: 5px;
     cursor: pointer;
   }
-  
-  .button-container button:hover {
-    background-color: #45a049;
-  }
-  
-  .button-container a {
-    text-decoration: none;
-    color: #777;
-  }
-  
-  .button-container a:hover {
-    color: #333;
-  }
-  
+   
+
+/* Estilo para la lista de proyectos */
+
+.project-title{
+  display: flex;
+  margin: 30px auto;
+  justify-content: center;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column; /* Mostrar los proyectos en columna */
+  gap: 10px; /* Espacio vertical entre proyectos */
+}
+
+.project-list li {
+  display: flex;
+  justify-content: space-between; /* Distribuir elementos horizontalmente */
+  align-items: center; /* Centrar verticalmente elementos */
+  padding: 10px;
+  border: 1px solid #ccc; /* Agregar borde para separar proyectos */
+}
+
+
+/* Estilo para el botón "Nuevo Proyecto" */
+.new-project-button {
+  background-color: #4CAF50; /* Fondo verde */
+  color: #fff; /* Texto blanco */
+  padding: 5px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Espacio vertical entre el botón y la lista de proyectos */
+  text-decoration: none;
+}
+
+.new-project-button:hover {
+  background-color: #45a049; /* Cambiar color al pasar el cursor sobre el botón */
+ }
+
+
+
+/* Estilo para acceso a detalles desde el dashboard */
+.details-button {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+.details-button:hover{
+  color: blue;
+} 
+
+/* Estilo para el botón "Eliminar" */
+.delete-button {
+  background-color: #ff0000; /* Fondo rojo */
+  color: #fff; /* Texto blanco */
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px; /* Espacio entre los botones "Eliminar" */
+  text-decoration: none;
+}
+ 
+.delete-button:hover {
+  background-color: #d23838; /* Cambiar color al pasar el cursor sobre el botón */
+}
+
+ 

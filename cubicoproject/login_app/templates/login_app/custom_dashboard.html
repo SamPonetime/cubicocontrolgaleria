@@ -20,21 +20,28 @@
       <button type="submit">Buscar</button>
     </form>
 
+    
+          <a class="new-project-button" href="{% url 'agregar_proyecto' %}">Nuevo Proyecto</a>
+
+
     <!-- Lista de Proyectos -->
-    <h3>Proyectos</h3>
-    <a href="{% url 'agregar_proyecto' %}"> Nuevo Proyecto</a>
-    <ul>
+    <h3 class="project-title">Proyectos Existentes</h3>
+    <ul class="project-list">
         {% if query %} {# Si se ha realizado una búsqueda #} 
             {% for proyecto in proyectos %}
-                <li><a href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a>
-                    <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a></li>
+                <li>
+                    <a class="details-button" href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a>
+                    <a class="delete-button" href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a>
+                </li>
             {% empty %}
                 <li>No se encontraron proyectos relacionados con la búsqueda.</li>
             {% endfor %}
         {% else %}
             {% for proyecto in proyectos %} {# Mostrar todos los proyectos si no hay búsqueda #}
-                <li><a href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a>
-                    <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a></li>
+                <li>
+                    <a class="details-button" href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a>
+                    <a class="delete-button" href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a>
+                </li>
             {% empty %}
                 <li>No hay proyectos registrados.</li>
             {% endfor %}
