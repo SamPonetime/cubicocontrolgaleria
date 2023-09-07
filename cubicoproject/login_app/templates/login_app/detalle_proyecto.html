@@ -75,5 +75,19 @@
             <input type="file" name="contratos">
             <button type="submit">Subir Contratos</button>
         </form>
+
+        <h2>Planos</h2>
+        {% if proyecto.planos %}
+            <a href="{{ proyecto.planos.url }}" target="_blank">{{ proyecto.planos.name }}</a>
+        {% else %}
+            <p>No se han subido planos para este proyecto.</p>
+        {% endif %}
+        
+        <h2>Contratos</h2>
+        {% if proyecto.contratos %}
+            <a href="{{ proyecto.contratos.url }}" target="_blank">{{ proyecto.contratos.name }}</a>
+        {% else %}
+            <p>No se han subido contratos para este proyecto.</p>
+        {% endif %}
 </body>
 </html>

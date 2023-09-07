@@ -23,6 +23,12 @@ class CustomLoginView(LoginView):
 def custom_dashboard_view(request):
     username = request.user.username
     proyectos = Proyecto.objects.all()
+    query = request.GET.get('search_proyect')  # Obtener la consulta de búsqueda del parámetro GET 'q'
+    
+    if query:
+        # Filtrar proyectos que coincidan con la consulta - icontains=operador de consulta mayus o minusculas
+        proyectos = proyectos.filter(nombre__icontains=query)
+    
     context = {'username': username, 'proyectos': proyectos}
     return render(request, 'login_app/custom_dashboard.html', context)
 

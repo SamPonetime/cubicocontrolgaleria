@@ -14,19 +14,32 @@
       <h2>¡Bienvenido, {{username}}!</h2>
     </div>
 
-     <!-- Enlace para agregar un nuevo proyecto -->
-     <a href="{% url 'agregar_proyecto' %}">Agregar Nuevo Proyecto</a>
-    
-     <!-- Sección de Listado de Proyectos -->
-    <h3>Listado de Proyectos</h3>
+    <!-- Barra de búsqueda -->
+    <form method="get" action="{% url 'custom_dashboard' %}">
+      <input type="text" name="search_proyect" placeholder="Buscar proyectos">
+      <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Lista de Proyectos -->
+    <h3>Proyectos</h3>
+    <a href="{% url 'agregar_proyecto' %}"> Nuevo Proyecto</a>
     <ul>
-        {% for proyecto in proyectos %}
-            <li><a href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a>
-              <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a></li>
-           
-        {% empty %}
-            <li>No hay proyectos registrados.</li>
-        {% endfor %}
+        {% if query %} {# Si se ha realizado una búsqueda #} 
+            {% for proyecto in proyectos %}
+                <li><a href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a>
+                    <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a></li>
+            {% empty %}
+                <li>No se encontraron proyectos relacionados con la búsqueda.</li>
+            {% endfor %}
+        {% else %}
+            {% for proyecto in proyectos %} {# Mostrar todos los proyectos si no hay búsqueda #}
+                <li><a href="{% url 'detalle_proyecto' proyecto.id %}">{{ proyecto.nombre }}</a>
+                    <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a></li>
+            {% empty %}
+                <li>No hay proyectos registrados.</li>
+            {% endfor %}
+        {% endif %}
     </ul>
+
   </main>
 </body>
