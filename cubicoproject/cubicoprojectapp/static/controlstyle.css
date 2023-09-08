@@ -18,8 +18,10 @@
     max-width: 1550px; /*Límite de ancho*/
     display: flex;
     align-items: center;
-    justify-content: center;
+ 
     height: 100vh;
+    flex-direction: column;
+    margin-top: 5rem;
   }
   
   .container {
@@ -29,7 +31,7 @@
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    
+   
   }
   
   h1 {
@@ -45,10 +47,29 @@
   form{
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacio vertical entre los elementos */
+    gap: 5px; /* Espacio vertical entre los elementos */
     margin: 15px;
 
    }
+
+ .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
 button{
 
@@ -127,4 +148,25 @@ button{
   background-color: #d23838; /* Cambiar color al pasar el cursor sobre el botón */
 }
 
+.back_dashboard{
+  background-color: dimgray;
+  border-radius: 5px;
+  padding: 5px;
+  color:white;
+  text-decoration: none;
+}
+.back_dashboard:hover{
+  background-color: rgb(79, 78, 78);
  
+}
+
+.edit-button{
+  background-color: rgb(35, 130, 203);
+  border-radius: 5px;
+  padding: 5px;
+  color:white;
+  text-decoration: none;
+}
+.edit-button:hover{
+  background-color: rgb(9, 9, 186);
+}

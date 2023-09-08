@@ -1,10 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Agregar Nuevo Proyecto</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
 </head>
-<body>
+
     <h1>Agregar Nuevo Proyecto</h1>
+    <article class="form-group">
     <form method="post">
         {% csrf_token %}
         <label for="nombre">Nombre del Proyecto:</label>
@@ -21,7 +24,8 @@
         <input type="date" name="fecha_fin"><br>
         <button type="submit">Agregar Proyecto</button>
     </form>
+    </article>
     <br>
-    <a href="{% url 'custom_dashboard' %}">Volver a la Lista de Proyectos</a>
+    <a class="back_dashboard" href="{% url 'custom_dashboard' %}">Volver a la Lista de Proyectos</a>
 </body>
 </html>

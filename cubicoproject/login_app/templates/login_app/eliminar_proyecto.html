@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Confirmar Eliminación</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
 </head>
 <body>
     <h1>Confirmar Eliminación</h1>
@@ -13,6 +15,6 @@
         <button type="submit">Eliminar</button>
     </form>
     
-    <a href="{% url 'custom_dashboard' %}">Cancelar</a>
+    <a class="back_dashboard" href="{% url 'custom_dashboard' %}">Cancelar</a>
 </body>
 </html>

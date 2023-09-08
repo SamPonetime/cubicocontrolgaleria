@@ -1,7 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Detalle de Proyecto</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
+
 </head>
 <body>
     <h1>Detalle del Proyecto</h1>
@@ -13,24 +16,25 @@
     <p>Fecha de Inicio: {{ proyecto.fecha_inicio }}</p>
     <p>Fecha de Fin: {{ proyecto.fecha_fin }}</p>
    
-    <a href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
-    <a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar Proyecto</a>
-    <a href="{% url 'custom_dashboard' %}">Volver al Dashboard</a>
+    <a class="edit-button" href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
+    <a class="delete-button" href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar Proyecto</a>
+    <a class="back_dashboard" href="{% url 'custom_dashboard' %}">Volver al Dashboard</a>
 
     <h2>Agregar Tarea</h2>
 
     <!-- Formulario para agregar nueva tarea -->
-    <form method="post" action="">
-        {% csrf_token %}
-        <label for="titulo">Título:</label>
-        <input type="text" name="titulo"><br>
-        <label for="descripcion">Descripción:</label>
-        <textarea name="descripcion"></textarea><br>
-        <label for="fecha_vencimiento">Fecha de Vencimiento:</label>
-        <input type="date" name="fecha_vencimiento"><br>
-        <button type="submit">Agregar Tarea</button>
-    </form>
-
+    <article class="form-group">
+        <form method="post" action="">
+            {% csrf_token %}
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo"><br>
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion"></textarea><br>
+            <label for="fecha_vencimiento">Fecha de Vencimiento:</label>
+            <input type="date" name="fecha_vencimiento"><br>
+            <button type="submit">Agregar Tarea</button>
+        </form>
+    </article>
     <h2>Tareas Pendientes</h2>
     <ul>
         {% for tarea in tareas_pendientes %}
