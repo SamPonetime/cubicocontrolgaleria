@@ -1,0 +1,48 @@
+/*  CSS Grid para dividir la pantalla en dos columnas */
+.task-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* de igual tamaño */
+    gap: 20px; 
+    margin-bottom: 15px;
+  }
+  
+  /* para cada columna de tareas */
+  .task-column {
+    padding: 10px;
+    background-color: #f0f0f0; 
+    border-radius: 5px;
+  }
+  
+  /* encabezados de las columnas */
+  .task-column h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /*para la lista de tareas */
+  .task-list {
+    list-style: none; 
+    padding: 0;
+  }
+  
+  /* para cada tarea */
+  .task-list li {
+    margin-bottom: 10px;
+  }
+  
+  /*fondo de las tareas completadas */
+  .task-column:nth-child(2) {
+    background-color: #ebebeb;
+  }
+
+  .form-group{
+    width: 500px;
+
+  }
+
+  .project-initials{ /*datos del proyecto en v. detalles y botones de navs*/
+   
+    align-items: center;
+    
+  }

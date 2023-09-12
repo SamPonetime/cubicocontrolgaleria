@@ -4,10 +4,11 @@
 <head>
     <title>Detalle de Proyecto</title>
     <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
-
+    <link rel="stylesheet" href="{% static 'controlstyledesktop.css' %}"  media="screen and (min-width: 600px)"> <!-- Estilos para pantallas más grandes -->
 </head>
 <body>
     <h1>Detalle del Proyecto</h1>
+ <div class="project-initials">
     <!-- Campos del proyecto -->
     <h2>{{ proyecto.nombre }}</h2>
     <p>Ubicación: {{ proyecto.ubicacion }}</p>
@@ -15,12 +16,13 @@
     <p>Presupuesto: {{ proyecto.presupuesto }}</p>
     <p>Fecha de Inicio: {{ proyecto.fecha_inicio }}</p>
     <p>Fecha de Fin: {{ proyecto.fecha_fin }}</p>
-   
+ 
     <a class="edit-button" href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
     <a class="delete-button" href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar Proyecto</a>
     <a class="back_dashboard" href="{% url 'custom_dashboard' %}">Volver al Dashboard</a>
-
+</div>
     <h2>Agregar Tarea</h2>
+
 
     <!-- Formulario para agregar nueva tarea -->
     <article class="form-group">
@@ -35,49 +37,54 @@
             <button type="submit">Agregar Tarea</button>
         </form>
     </article>
-    <h2>Tareas Pendientes</h2>
-    <ul>
-        {% for tarea in tareas_pendientes %}
-        <li>
-            <!-- Formulario para marcar tareas como completadas -->
-            <form method="post" action="{% url 'marcar_completada' tarea.id %}">
+    <div class="task-columns">
+        <div class="task-column">
+          <h2>Tareas Pendientes</h2>
+          <ul class="task-list">
+            {% for tarea in tareas_pendientes %}
+            <li>
+              <!-- Formulario para marcar tareas como completadas -->
+              <form method="post" action="{% url 'marcar_completada' tarea.id %}">
                 {% csrf_token %}
                 <input type="checkbox" name="tarea_{{ tarea.id }}" {% if tarea.completada %}checked{% endif %} onchange="this.form.submit()">
-                {{ tarea.titulo }}
-                <br>
-                {{ tarea.descripcion }}
-                <br>
-                Fecha de Vencimiento: {{ tarea.fecha_vencimiento }}
-            </form>
-        </li>
-        {% endfor %}
-    </ul>
+                <div class="task">
+                  <div class="task-title">{{ tarea.titulo }}</div>
+                  <div class="task-description">{{ tarea.descripcion }}</div>
+                  <div class="task-finaldate">{{ tarea.fecha_vencimiento }}</div>
+                </div>
+              </form>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="task-column">
+          <h2>Tareas Completadas</h2>
+          <ul class="task-list">
+            {% for tarea in tareas_completadas %}
+            <li>
+              <div class="task">
+                <div class="task-title">{{ tarea.titulo }}</div>
+                <div class="task-description">{{ tarea.descripcion }}</div>
+                <div class="task-finaldate">{{ tarea.fecha_vencimiento }}</div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
 
-    <h2>Tareas Completadas</h2>
-    <ul>
-        {% for tarea in tareas_completadas %}
-        <li>
-            {{ tarea.titulo }}
-            <br>
-            {{ tarea.descripcion }}
-            <br>
-            Fecha de Vencimiento: {{ tarea.fecha_vencimiento }}
-        </li>
-        {% endfor %}
-    </ul>
-
-    <h2>Subir Planos</h2>
+    <h2>Subir un Plano</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="planos">
-            <button type="submit">Subir Planos</button>
+            <button type="submit">Confirmar</button>
         </form>
 
-    <h2>Subir Contratos</h2>
+    <h2>Subir un Contrato</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="contratos">
-            <button type="submit">Subir Contratos</button>
+            <button type="submit">Confirmar</button>
         </form>
 
         <h2>Planos</h2>

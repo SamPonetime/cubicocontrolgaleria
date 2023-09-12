@@ -9,7 +9,7 @@ class Proyecto(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
  # Campos para planos y contratos
-    planos = models.FileField(upload_to='planos/', blank=True, null=True)
+    planos = models.FileField(upload_to='planos/', blank=True, null=True) 
     contratos = models.FileField(upload_to='contratos/', blank=True, null=True)
 
 

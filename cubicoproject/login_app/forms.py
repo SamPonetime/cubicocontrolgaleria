@@ -12,3 +12,5 @@ class TareaForm(forms.ModelForm):
     class Meta:
         model = Tarea
         fields = ['titulo', 'descripcion', 'fecha_vencimiento']
+
+

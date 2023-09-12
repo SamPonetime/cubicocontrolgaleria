@@ -48,12 +48,12 @@
     display: flex;
     flex-direction: column;
     gap: 5px; /* Espacio vertical entre los elementos */
-    margin: 15px;
+    margin-bottom: 8px;
 
    }
 
  .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   .form-group label {
@@ -80,6 +80,15 @@ button{
     cursor: pointer;
   }
    
+.project-initials{ /*datos del proyecto en v. detalles y botones de navs*/
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 10px;
+}
 
 /* Estilo para la lista de proyectos */
 
@@ -169,4 +178,40 @@ button{
 }
 .edit-button:hover{
   background-color: rgb(9, 9, 186);
+}
+
+
+
+/* Aplicar un borde izquierdo a los elementos <li> */
+.task-list li {
+  border-left: 2px solid #007bff;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  list-style: none; /* Elimina el punto de la lista desordenada */
+}
+
+/* Estilos para el título y la descripción de la tarea */
+.task-list li div {
+  margin-top: 5px;
+}
+
+/* Estilo para el título de la tarea */
+.task-title {
+  font-weight: bold;
+}
+ 
+
+.task {
+  max-width: 300px; /* Establece el ancho máximo deseado */
+  margin-bottom: 10px; /* Agrega margen inferior */
+  padding: 10px; /* Agrega espacio interno para mejorar la apariencia */
+  border: 1px solid #ccc; /* Opcional: Agrega un borde para resaltar cada tarea */
+  border-radius: 5px; /* Opcional: Agrega esquinas redondeadas */
+  overflow: hidden; /* Opcional: Evita que el contenido desborde el cuadro si es muy largo */
+}
+
+.task-description {
+  /* Permitir que el texto fluya en varios renglones */
+  word-wrap: break-word;
+  white-space: normal;
 }

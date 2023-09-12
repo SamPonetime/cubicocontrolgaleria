@@ -1,17 +1,33 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Editar Proyecto</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
 </head>
 <body>
     <h1>Editar Proyecto</h1>
     
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }} <!--trae todo el formulario para editar-->
+        {{ form.as_p }} <!-- Trae los campos del proyecto -->
+        
+        <!-- Muestra las tareas asociadas al proyecto -->
+        <h2>Tareas</h2>
+        <ul class="task-list">
+            {% for tarea in proyecto.tarea_set.all %}
+                <li>
+                    <div class="task-title">{{ tarea.titulo }}</div>
+                    <div class="task-description">{{ tarea.descripcion }}</div>
+                </li>
+            {% empty %}
+                <li>No hay tareas asociadas a este proyecto.</li>
+            {% endfor %}
+        </ul>
+        
         <button type="submit">Guardar Cambios</button>
     </form>
-    
     <a href="{% url 'detalle_proyecto' proyecto.id %}">Cancelar</a>
 </body>
 </html>
