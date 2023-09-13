@@ -1,0 +1,82 @@
+Watching for file changes with StatReloader
+C:\cubicocontrolgaleria\cubicoproject\login_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+El valor de instance.id es None
+El valor de instance.id es None
+Watching for file changes with StatReloader
+C:\cubicocontrolgaleria\cubicoproject\login_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+El valor de instance.id es None
+Internal Server Error: /detalle_proyecto/11/
+Traceback (most recent call last):
+  File "C:\Users\Samuel\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Samuel\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\cubicocontrolgaleria\cubicoproject\login_app\views.py", line 85, in detalle_proyecto
+    logger.debug(f'Archivo plano creado con id {nuevo_plano.id}')
+    ^^^^^^
+NameError: name 'logger' is not defined
+C:\cubicocontrolgaleria\cubicoproject\login_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+El valor de instance.id es None
+Archivo plano creado con id 39
+El valor de instance.id es None
+El valor de instance.id es None
+Archivo plano creado con id 41
+C:\cubicocontrolgaleria\cubicoproject\login_app\forms.py changed, reloading.
+Watching for file changes with StatReloader
+El valor de instance.id es None
+Archivo plano creado con id 42
+El valor de instance.id es None
+C:\cubicocontrolgaleria\cubicoproject\login_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\cubicocontrolgaleria\cubicoproject\login_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\cubicocontrolgaleria\cubicoproject\login_app\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\cubicocontrolgaleria\cubicoproject\login_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+El valor de instance.id es None
+Archivo plano creado con id 44
+El valor de instance.id es None
+Internal Server Error: /detalle_proyecto/11/
+Traceback (most recent call last):
+  File "C:\Users\Samuel\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Samuel\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\cubicocontrolgaleria\cubicoproject\login_app\views.py", line 93, in detalle_proyecto
+    logger.debug(f'Archivo contrato creado con id {nuevo_plano.id}')
+                                                   ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'nuevo_plano' where it is not associated with a value
+C:\cubicocontrolgaleria\cubicoproject\login_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+El valor de instance.id es None
+Archivo contrato creado con id 46
+C:\cubicocontrolgaleria\cubicoproject\login_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+El valor de instance.id es None
+Archivo plano creado con id 47
+El valor de instance.id es None
+Archivo contrato creado con id 48
+C:\cubicocontrolgaleria\cubicoproject\login_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+El valor de instance.id es None
+Archivo plano creado con id 49
+El valor de instance.id es None
+Archivo contrato creado con id 50
+C:\cubicocontrolgaleria\cubicoproject\login_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\cubicocontrolgaleria\cubicoproject\login_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Archivo plano creado con id 51
+Archivo contrato creado con id 52

@@ -1,6 +1,7 @@
 from django.db import models
 import os
 from datetime import datetime
+import logging
 
 
 # Create your models here.
@@ -8,16 +9,27 @@ from datetime import datetime
 def archivo_ruta(instance, filename):
     # Obtener la extensión del archivo original
     file_extension = filename.split('.')[-1]
+
+    # Obtener el id del proyecto desde la instancia del archivo
+    proyecto_id = instance.proyecto.id
     
-    # Generar un nombre de archivo único basado en la fecha y hora actual
+    # Generar un nombre de archivo único basado en el fecha y hora actual
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     archivo_nombre = f"{timestamp}.{file_extension}"
     
-    # Crear una ruta única basada en el nombre de archivo generado
-    ruta = f'proyectos/{instance.id}/{archivo_nombre}'
+    # Crear una ruta única basada en el nombre de archivo generado y el id del proyecto
+    ruta = f'proyectos/{proyecto_id}/{archivo_nombre}'
     
     return ruta
 
+
+class Archivo(models.Model):
+    archivo = models.FileField(upload_to=archivo_ruta)
+    
+
+    def __str__(self):
+        return self.archivo.name
+    
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=100)
     ubicacion = models.CharField(max_length=100)
@@ -44,9 +56,4 @@ class Tarea(models.Model):
     def __str__(self):
         return self.titulo
     
-class Archivo(models.Model):
-    archivo = models.FileField(upload_to=archivo_ruta)
-    
-
-    def __str__(self):
-        return self.archivo.name
+ 

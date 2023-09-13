@@ -143,4 +143,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://*.cubicoconsultoresconstructores.com', 'https://cubicoconsultoresconstructores.com']
 
- 
+ # Configuración de registros
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',  # Cambia a 'INFO' para registros menos detallados
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',  # Nombre del archivo de registro
+        },
+    },
+    'root': {
+        'handlers': ['file'],
+        'level': 'DEBUG',  # Cambia a 'INFO' para registros menos detallados
+    },
+}

@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Archivo, Proyecto, Tarea
 from .forms import ProyectoForm  # formulario
 from django.http import HttpResponseBadRequest
+import logging
+
 
 
 class CustomLoginView(LoginView):
@@ -52,41 +54,46 @@ def agregar_proyecto(request):
     
 
 def detalle_proyecto(request, proyecto_id):
+    logger = logging.getLogger(__name__)
+
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
     tareas_pendientes = Tarea.objects.filter(proyecto=proyecto, completada=False)
     tareas_completadas = Tarea.objects.filter(proyecto=proyecto, completada=True)
 
     if request.method == 'POST':
+        # Comprobar si se proporcionó un título antes de crear la tarea
         titulo = request.POST.get('titulo')
         descripcion = request.POST.get('descripcion')
         fecha_vencimiento = request.POST.get('fecha_vencimiento')
 
-        # Comprobar si se proporcionó un título antes de crear la tarea
         if titulo:
             tarea_nueva = Tarea(
                 proyecto=proyecto,
                 titulo=titulo,
                 descripcion=descripcion,
                 fecha_vencimiento=fecha_vencimiento,
-                completada=False  # Nueva tarea creada como pendiente
+                completada=False
             )
             tarea_nueva.save()
 
-        # Guarda los cambios en el modelo Proyecto
-        proyecto.save()  # Ahora se guarda el proyecto en la base de datos
+        proyecto.save()
 
         # Manejar la carga de archivos de planos y contratos después de guardar el proyecto
         for archivo_plano in request.FILES.getlist('planos'):
             nuevo_plano = Archivo(archivo=archivo_plano)
+            nuevo_plano.proyecto = proyecto  # Asignar el proyecto a la instancia del archivo
             nuevo_plano.save()
             proyecto.planos.add(nuevo_plano)
-        
+            logger.debug(f'Archivo plano creado con id {nuevo_plano.id}')
+
         for archivo_contrato in request.FILES.getlist('contratos'):
             nuevo_contrato = Archivo(archivo=archivo_contrato)
+            nuevo_contrato.proyecto = proyecto  # Asignar el proyecto a la instancia del archivo
             nuevo_contrato.save()
             proyecto.contratos.add(nuevo_contrato)
+            logger.debug(f'Archivo contrato creado con id {nuevo_contrato.id}')
 
-        return redirect('detalle_proyecto', proyecto_id=proyecto.id)  # Usar proyecto.id en lugar de proyecto_id
+        return redirect('detalle_proyecto', proyecto_id=proyecto.id)
 
     return render(request, 'login_app/detalle_proyecto.html', {'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
 
