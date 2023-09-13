@@ -88,17 +88,25 @@
         </form>
 
         <h2>Planos</h2>
-        {% if proyecto.planos %}
-            <a href="{{ proyecto.planos.url }}" target="_blank">{{ proyecto.planos.name }}</a>
-        {% else %}
+        <ul>
+          {% for plano in proyecto.planos.all %}
+            <li>
+              <a href="{{ plano.archivo.url }}" target="_blank">{{ plano.archivo.name }}</a>
+            </li>
+          {% empty %}
             <p>No se han subido planos para este proyecto.</p>
-        {% endif %}
-        
+          {% endfor %}
+        </ul>
+
         <h2>Contratos</h2>
-        {% if proyecto.contratos %}
-            <a href="{{ proyecto.contratos.url }}" target="_blank">{{ proyecto.contratos.name }}</a>
-        {% else %}
+        <ul>
+          {% for contrato in proyecto.contratos.all %}
+            <li>
+              <a href="{{ contrato.archivo.url }}" target="_blank">{{ contrato.archivo.name }}</a>
+            </li>
+          {% empty %}
             <p>No se han subido contratos para este proyecto.</p>
-        {% endif %}
+          {% endfor %}
+        </ul>
 </body>
 </html>

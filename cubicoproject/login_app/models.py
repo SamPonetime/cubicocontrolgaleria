@@ -1,6 +1,23 @@
 from django.db import models
+import os
+from datetime import datetime
+
 
 # Create your models here.
+
+def archivo_ruta(instance, filename):
+    # Obtener la extensión del archivo original
+    file_extension = filename.split('.')[-1]
+    
+    # Generar un nombre de archivo único basado en la fecha y hora actual
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    archivo_nombre = f"{timestamp}.{file_extension}"
+    
+    # Crear una ruta única basada en el nombre de archivo generado
+    ruta = f'proyectos/{instance.id}/{archivo_nombre}'
+    
+    return ruta
+
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=100)
     ubicacion = models.CharField(max_length=100)
@@ -9,9 +26,11 @@ class Proyecto(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
  # Campos para planos y contratos
-    planos = models.FileField(upload_to='planos/', blank=True, null=True) 
-    contratos = models.FileField(upload_to='contratos/', blank=True, null=True)
-
+    planos = models.ManyToManyField('Archivo', related_name='proyectos_planos', blank=True) 
+    contratos = models.ManyToManyField('Archivo', related_name='proyectos_contratos', blank=True) 
+   
+    def __str__(self):
+        return self.nombre
 
 
 #tareas dentro de cada proyecto
@@ -24,3 +43,10 @@ class Tarea(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+class Archivo(models.Model):
+    archivo = models.FileField(upload_to=archivo_ruta)
+    
+
+    def __str__(self):
+        return self.archivo.name

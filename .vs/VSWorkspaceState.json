@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\cubicoproject",
+    "\\cubicoproject\\login_app",
+    "\\cubicoproject\\login_app\\templates",
+    "\\cubicoproject\\login_app\\templates\\login_app"
+  ],
+  "SelectedNode": "\\cubicoproject\\login_app\\views.py",
+  "PreviewInSolutionExplorer": false
+}
