@@ -1,3 +1,4 @@
+import os
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import get_object_or_404, render, redirect
@@ -5,8 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Archivo, Proyecto, Tarea
 from .forms import ProyectoForm  # formulario
 from django.http import HttpResponseBadRequest
- 
-
+from .forms import ProyectoForm, ArchivoForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.conf import settings
 
 
 class CustomLoginView(LoginView):
@@ -96,16 +99,42 @@ def detalle_proyecto(request, proyecto_id):
 
 def editar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
+     # Imprime la ubicación del proyecto para depurar
+    print(f"Ubicación del proyecto: {proyecto.ubicacion}")
     
     if request.method == 'POST':
         form = ProyectoForm(request.POST, instance=proyecto)
-        if form.is_valid():
+        archivo_form = ArchivoForm(request.POST, request.FILES, instance=proyecto)
+        
+        archivos_a_eliminar = request.POST.getlist('eliminar_archivos')
+        
+        if archivos_a_eliminar:
+            for archivo_id in archivos_a_eliminar:
+
+                # Eliminar físicamente el archivo del sistema de archivos
+              try:
+                    archivo_a_eliminar = Archivo.objects.get(id=archivo_id)
+                    
+                    # Eliminar físicamente el archivo del sistema de archivos
+                    ruta_archivo = os.path.join(settings.MEDIA_ROOT, str(archivo_a_eliminar.archivo))
+                    if os.path.exists(ruta_archivo):
+                        os.remove(ruta_archivo)
+
+                    archivo_a_eliminar.delete()
+              except Archivo.DoesNotExist:
+                    # Manejar el caso en el que el archivo no exista en la base de datos
+                    pass
+
+        if form.is_valid() and archivo_form.is_valid():
             form.save()
-            return redirect('detalle_proyecto', proyecto_id=proyecto.id)
+            archivo_form.save()
+            return HttpResponseRedirect(reverse('detalle_proyecto', args=[proyecto_id]))
     else:
+     
         form = ProyectoForm(instance=proyecto)
-    
-    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto})
+        archivo_form = ArchivoForm(instance=proyecto)
+
+    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto, 'archivo_form': archivo_form})
 
 
 def eliminar_proyecto(request, proyecto_id):

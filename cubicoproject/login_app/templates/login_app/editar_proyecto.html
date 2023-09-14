@@ -1,18 +1,37 @@
-{% load static %}
-
+﻿{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Editar Proyecto</title>
     <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
+    <meta charset="utf-8">
 </head>
 <body>
     <h1>Editar Proyecto</h1>
     
     <form class="form-group" method="post">
         {% csrf_token %}
-        {{ form.as_p }} <!-- Trae los campos del proyecto -->
-        
+       <!-- {{ form.as_p }} <!-- Trae los campos del proyecto -->
+        <!-- Nombre del proyecto -->
+        <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+        {{ form.nombre }}
+    
+      
+        <!-- Cliente del proyecto -->
+        <label for="{{ form.cliente.id_for_label }}">Cliente:</label>
+        {{ form.cliente }}
+    
+        <!-- Presupuesto del proyecto -->
+        <label for="{{ form.presupuesto.id_for_label }}">Presupuesto:</label>
+        {{ form.presupuesto }}
+    
+        <!-- Fecha de inicio del proyecto -->
+        <label for="{{ form.fecha_inicio.id_for_label }}">Fecha inicio:</label>
+        {{ form.fecha_inicio }}
+    
+        <!-- Fecha de fin del proyecto -->
+        <label for="{{ form.fecha_fin.id_for_label }}">Fecha fin:</label>
+        {{ form.fecha_fin }}
         <!-- Muestra las tareas asociadas al proyecto -->
         <h2>Tareas</h2>
         <ul class="task-list">
@@ -26,8 +45,33 @@
             {% endfor %}
         </ul>
         
+          <h2>Planos a eliminar</h2>
+            <ul class="archivos-list">
+              {% for archivo in proyecto.planos.all %}
+                <li>
+                  <span class="archivo-icon">📁</span>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="archivo-checkbox" name="eliminar_archivos" value="{{ archivo.id }}">
+                    {{ archivo.archivo.name }}
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+         <h2>Contratos a eliminar</h2>
+        <ul class="archivos-list">
+          {% for archivo in proyecto.contratos.all %}
+            <li>
+              <span class="archivo-icon">📁</span>
+              <input type="checkbox" name="eliminar_archivos" value="{{ archivo.id }}">
+              {{ archivo.archivo.name }}
+            </ul>
+            </li>
+          {% endfor %}
+        </ul>
+        
         <button type="submit">Guardar Cambios</button>
     </form>
-    <a href="{% url 'detalle_proyecto' proyecto.id %}"class="back_dashboard">Cancelar</a>
+
+    <a href="{% url 'detalle_proyecto' proyecto.id %}" class="back_dashboard">Cancelar</a>
 </body>
 </html>

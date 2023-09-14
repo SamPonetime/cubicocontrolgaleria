@@ -61,9 +61,8 @@
   }
   
   .form-group label {
-    display: block;
+  
     margin-bottom: 5px;
-    font-weight: bold;
   }
   
   .form-group input {
@@ -271,4 +270,23 @@ ul.archivos-list li .archivo-nombre {
 ul.archivos-list li .archivo-nombre:hover {
   color: #007bff;
   text-decoration: underline;
+}
+
+
+/* Estilo para el label del checkbox EDITAR.HTML */
+.checkbox-label {
+  display: flex;
+  flex-direction:row-reverse;
+  align-items: center; 
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  margin-left: 10px; 
+  font-size: 1.4rem;
+  gap: 1rem;
+}
+
+/* Estilo para el checkbox */
+.archivo-checkbox {
+  width: 20px;  
+  height: 20px;  
+  margin: 0;  
 }
