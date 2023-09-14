@@ -24,6 +24,10 @@
     margin-top: 5rem;
   }
   
+  body p{
+  font-size:1.2rem
+  }
+
   .container {
     width: 100%;
     max-width: 400px;
@@ -213,4 +217,58 @@ button{
   /* Permitir que el texto fluya en varios renglones */
   word-wrap: break-word;
   white-space: normal;
+}
+
+.nav-button{   /* Nav en vista detalles */
+    display:flex;
+    flex-direction:column-reverse;
+    gap:3px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing:border-box;
+  /* Otros estilos personalizados aquí */
+}
+
+/*Lista de planos y lista de contratos*/
+.planos_contratos_list ul{
+    list-style-type: none;
+}
+
+/* Estilo para la lista de archivos */
+ul.archivos-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo para cada elemento de la lista de archivos */
+ul.archivos-list li {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para el icono de archivo */
+ul.archivos-list li .archivo-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+/* Estilo para el nombre del archivo */
+ul.archivos-list li .archivo-nombre {
+  font-size: 1.4rem;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Estilo para el enlace del archivo */
+ul.archivos-list li .archivo-nombre:hover {
+  color: #007bff;
+  text-decoration: underline;
 }

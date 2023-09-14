@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Archivo, Proyecto, Tarea
 from .forms import ProyectoForm  # formulario
 from django.http import HttpResponseBadRequest
-import logging
+ 
 
 
 
@@ -54,7 +54,6 @@ def agregar_proyecto(request):
     
 
 def detalle_proyecto(request, proyecto_id):
-    logger = logging.getLogger(__name__)
 
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
     tareas_pendientes = Tarea.objects.filter(proyecto=proyecto, completada=False)
@@ -84,15 +83,13 @@ def detalle_proyecto(request, proyecto_id):
             nuevo_plano.proyecto = proyecto  # Asignar el proyecto a la instancia del archivo
             nuevo_plano.save()
             proyecto.planos.add(nuevo_plano)
-            logger.debug(f'Archivo plano creado con id {nuevo_plano.id}')
-
+    
         for archivo_contrato in request.FILES.getlist('contratos'):
             nuevo_contrato = Archivo(archivo=archivo_contrato)
             nuevo_contrato.proyecto = proyecto  # Asignar el proyecto a la instancia del archivo
             nuevo_contrato.save()
             proyecto.contratos.add(nuevo_contrato)
-            logger.debug(f'Archivo contrato creado con id {nuevo_contrato.id}')
-
+       
         return redirect('detalle_proyecto', proyecto_id=proyecto.id)
 
     return render(request, 'login_app/detalle_proyecto.html', {'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})

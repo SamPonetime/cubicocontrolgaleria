@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\cubicoproject",
+    "\\cubicoproject\\cubicoproject",
+    "\\cubicoproject\\cubicoprojectapp",
     "\\cubicoproject\\login_app",
     "\\cubicoproject\\login_app\\templates",
     "\\cubicoproject\\login_app\\templates\\login_app"

@@ -16,14 +16,13 @@
     <p>Presupuesto: {{ proyecto.presupuesto }}</p>
     <p>Fecha de Inicio: {{ proyecto.fecha_inicio }}</p>
     <p>Fecha de Fin: {{ proyecto.fecha_fin }}</p>
- 
-    <a class="edit-button" href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
-    <a class="delete-button" href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar Proyecto</a>
-    <a class="back_dashboard" href="{% url 'custom_dashboard' %}">Volver al Dashboard</a>
+    <section class="nav-button">
+        <a class="edit-button" href="{% url 'editar_proyecto' proyecto.id %}">Editar Proyecto</a>
+        <a class="delete-button" href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar Proyecto</a>
+        <a class="back_dashboard" href="{% url 'custom_dashboard' %}">Volver a la lista</a>
+    </section>
 </div>
     <h2>Agregar Tarea</h2>
-
-
     <!-- Formulario para agregar nueva tarea -->
     <article class="form-group">
         <form method="post" action="">
@@ -87,28 +86,30 @@
             <button type="submit">Confirmar</button>
         </form>
 
+    <div class="planos_contratos_list">
         <h2>Planos</h2>
-        <ul>
+        <ul class="archivos-list"> <!-- Agregar la clase "archivos-list" aquí -->
           {% for plano in proyecto.planos.all %}
             <li>
-              <a href="{{ plano.archivo.url }}" target="_blank">{{ plano.archivo.name }}</a>
+              <span class="archivo-icon">📁</span> <!-- Icono de archivo -->
+              <a href="{{ plano.archivo.url }}" target="_blank" class="archivo-nombre">{{ plano.archivo.name }}</a>
             </li>
           {% empty %}
             <p>No se han subido planos para este proyecto.</p>
           {% endfor %}
         </ul>
-     
-         
 
         <h2>Contratos</h2>
-        <ul>
+        <ul class="archivos-list"> <!-- Agregar la clase "archivos-list" aquí -->
           {% for contrato in proyecto.contratos.all %}
             <li>
-              <a href="{{ contrato.archivo.url }}" target="_blank">{{ contrato.archivo.name }}</a>
+              <span class="archivo-icon">📁</span> <!-- Icono de archivo -->
+              <a href="{{ contrato.archivo.url }}" target="_blank" class="archivo-nombre">{{ contrato.archivo.name }}</a>
             </li>
           {% empty %}
             <p>No se han subido contratos para este proyecto.</p>
           {% endfor %}
         </ul>
+    </div>
 </body>
 </html>

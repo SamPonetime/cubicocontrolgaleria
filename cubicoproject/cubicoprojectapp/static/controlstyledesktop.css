@@ -46,3 +46,8 @@
     align-items: center;
     
   }
+
+  .nav-button{
+    flex-direction:row-reverse;
+    gap:3px;
+}

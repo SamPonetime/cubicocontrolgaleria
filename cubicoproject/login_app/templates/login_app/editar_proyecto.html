@@ -9,7 +9,7 @@
 <body>
     <h1>Editar Proyecto</h1>
     
-    <form method="post">
+    <form class="form-group" method="post">
         {% csrf_token %}
         {{ form.as_p }} <!-- Trae los campos del proyecto -->
         
@@ -28,6 +28,6 @@
         
         <button type="submit">Guardar Cambios</button>
     </form>
-    <a href="{% url 'detalle_proyecto' proyecto.id %}">Cancelar</a>
+    <a href="{% url 'detalle_proyecto' proyecto.id %}"class="back_dashboard">Cancelar</a>
 </body>
 </html>
