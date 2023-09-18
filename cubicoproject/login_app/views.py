@@ -98,9 +98,10 @@ def detalle_proyecto(request, proyecto_id):
     return render(request, 'login_app/detalle_proyecto.html', {'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
 
 def editar_proyecto(request, proyecto_id):
+    print("La vista editar_proyecto se está ejecutando.")
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
-     # Imprime la ubicación del proyecto para depurar
-    print(f"Ubicación del proyecto: {proyecto.ubicacion}")
+    tareas_pendientes = Tarea.objects.filter(proyecto=proyecto, completada=False)
+    tareas_completadas = Tarea.objects.filter(proyecto=proyecto, completada=True)
     
     if request.method == 'POST':
         form = ProyectoForm(request.POST, instance=proyecto)
@@ -110,9 +111,7 @@ def editar_proyecto(request, proyecto_id):
         
         if archivos_a_eliminar:
             for archivo_id in archivos_a_eliminar:
-
-                # Eliminar físicamente el archivo del sistema de archivos
-              try:
+                try:
                     archivo_a_eliminar = Archivo.objects.get(id=archivo_id)
                     
                     # Eliminar físicamente el archivo del sistema de archivos
@@ -121,20 +120,28 @@ def editar_proyecto(request, proyecto_id):
                         os.remove(ruta_archivo)
 
                     archivo_a_eliminar.delete()
-              except Archivo.DoesNotExist:
+                except Archivo.DoesNotExist:
                     # Manejar el caso en el que el archivo no exista en la base de datos
                     pass
 
         if form.is_valid() and archivo_form.is_valid():
+            print("Ambos formularios son válidos.")
             form.save()
             archivo_form.save()
-            return HttpResponseRedirect(reverse('detalle_proyecto', args=[proyecto_id]))
+            # Agregar un mensaje de impresión para depuración
+            print("Se han guardado ambos formularios correctamente.")
+        else:
+            print(form.errors)
+            print(archivo_form.errors)
+            print(request.POST)
     else:
-     
+        print("El formulario ProyectoForm NO es válido.")
         form = ProyectoForm(instance=proyecto)
-        archivo_form = ArchivoForm(instance=proyecto)
-
-    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto, 'archivo_form': archivo_form})
+        archivos_proyecto = proyecto.planos.all() | proyecto.contratos.all()
+        archivo_form = ArchivoForm(instance=proyecto, initial={'eliminar_archivos': archivos_proyecto})
+        
+    print("Antes de la recargar.")
+    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto, 'archivo_form': archivo_form, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
 
 
 def eliminar_proyecto(request, proyecto_id):
@@ -149,3 +156,8 @@ def marcar_tarea_completada(request, tarea_id):
     tarea.completada = not tarea.completada
     tarea.save()
     return redirect('detalle_proyecto', proyecto_id=tarea.proyecto.id)
+
+def eliminar_tarea(request, tarea_id):
+    tarea = get_object_or_404(Tarea, id=tarea_id)
+    tarea.delete()
+    return redirect('editar_proyecto', proyecto_id=tarea.proyecto.id)

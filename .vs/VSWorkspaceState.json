@@ -4,10 +4,12 @@
     "\\cubicoproject",
     "\\cubicoproject\\cubicoproject",
     "\\cubicoproject\\cubicoprojectapp",
+    "\\cubicoproject\\cubicoprojectapp\\static",
+    "\\cubicoproject\\cubicoprojectapp\\__pycache__",
     "\\cubicoproject\\login_app",
     "\\cubicoproject\\login_app\\templates",
     "\\cubicoproject\\login_app\\templates\\login_app"
   ],
-  "SelectedNode": "\\cubicoproject\\login_app\\views.py",
+  "SelectedNode": "\\cubicoproject\\cubicoprojectapp\\static\\controlstyle.css",
   "PreviewInSolutionExplorer": false
 }

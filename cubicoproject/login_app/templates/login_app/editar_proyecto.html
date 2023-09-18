@@ -15,33 +15,53 @@
         <!-- Nombre del proyecto -->
         <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
         {{ form.nombre }}
-    
-      
+        {{ form.nombre.errors }}
+
+         <label for="{{ form.ubicacion.id_for_label }}">ubicación:</label>
+        {{ form.ubicacion }}
+        {{ form.ubicacion.errors }}
+
+
         <!-- Cliente del proyecto -->
         <label for="{{ form.cliente.id_for_label }}">Cliente:</label>
         {{ form.cliente }}
-    
+        {{ form.cliente.errors }}
         <!-- Presupuesto del proyecto -->
         <label for="{{ form.presupuesto.id_for_label }}">Presupuesto:</label>
         {{ form.presupuesto }}
-    
+        {{ form.presupuesto.errors }}
         <!-- Fecha de inicio del proyecto -->
         <label for="{{ form.fecha_inicio.id_for_label }}">Fecha inicio:</label>
         {{ form.fecha_inicio }}
-    
+        {{ form.fecha_inicio.errors }}
         <!-- Fecha de fin del proyecto -->
         <label for="{{ form.fecha_fin.id_for_label }}">Fecha fin:</label>
         {{ form.fecha_fin }}
+        {{ form.fecha_fin.errors }}
         <!-- Muestra las tareas asociadas al proyecto -->
-        <h2>Tareas</h2>
+       <h2>Tareas Pendientes</h2>
         <ul class="task-list">
-            {% for tarea in proyecto.tarea_set.all %}
+            {% for tarea in tareas_pendientes %}
                 <li>
                     <div class="task-title">{{ tarea.titulo }}</div>
                     <div class="task-description">{{ tarea.descripcion }}</div>
+                    <a href="{% url 'eliminar_tarea' tarea.id %}" class="eliminar-tarea">Eliminar</a>
                 </li>
             {% empty %}
-                <li>No hay tareas asociadas a este proyecto.</li>
+                <li>No hay tareas pendientes.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Tareas Completadas</h2>
+        <ul class="task-list">
+            {% for tarea in tareas_completadas %}
+                <li>
+                    <div class="task-title">{{ tarea.titulo }}</div>
+                    <div class="task-description">{{ tarea.descripcion }}</div>
+                    <a href="{% url 'eliminar_tarea' tarea.id %}" class="eliminar-tarea">Eliminar</a>
+                </li>
+            {% empty %}
+                <li>No hay tareas completadas.</li>
             {% endfor %}
         </ul>
         
@@ -54,6 +74,9 @@
                     <input type="checkbox" class="archivo-checkbox" name="eliminar_archivos" value="{{ archivo.id }}">
                     {{ archivo.archivo.name }}
                   </label>
+                   {% if archivo_form.errors.archivo %}
+                      <span class="error-message">{{ archivo_form.errors.archivo }}</span>
+                   {% endif %}
                 </li>
               {% endfor %}
             </ul>
@@ -64,7 +87,9 @@
               <span class="archivo-icon">📁</span>
               <input type="checkbox" name="eliminar_archivos" value="{{ archivo.id }}">
               {{ archivo.archivo.name }}
-            </ul>
+              {% if archivo_form.errors.archivo %}
+                <span class="error-message">{{ archivo_form.errors.archivo }}</span>
+              {% endif %}
             </li>
           {% endfor %}
         </ul>
@@ -72,6 +97,6 @@
         <button type="submit">Guardar Cambios</button>
     </form>
 
-    <a href="{% url 'detalle_proyecto' proyecto.id %}" class="back_dashboard">Cancelar</a>
+    <a href="{% url 'detalle_proyecto' proyecto.id %}" class="back_dashboard">Volver a detalles</a>
 </body>
 </html>

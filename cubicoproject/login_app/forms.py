@@ -6,10 +6,14 @@ class ProyectoForm(forms.ModelForm):
         model = Proyecto
         fields = '__all__'
  
+ 
+
+
 
 class ArchivoForm(forms.ModelForm):
-    proyecto = forms.ModelChoiceField(queryset=Proyecto.objects.all(), widget=forms.HiddenInput())
+    proyecto = forms.ModelChoiceField(queryset=Proyecto.objects.all(), widget=forms.HiddenInput(), required=False)
     eliminar_archivos = forms.ModelMultipleChoiceField(queryset=Archivo.objects.none(), required=False, widget=forms.CheckboxSelectMultiple)
+
 
     class Meta:
         model = Archivo
