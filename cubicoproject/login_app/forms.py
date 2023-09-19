@@ -9,22 +9,7 @@ class ProyectoForm(forms.ModelForm):
  
 
 
-
-class ArchivoForm(forms.ModelForm):
-    proyecto = forms.ModelChoiceField(queryset=Proyecto.objects.all(), widget=forms.HiddenInput(), required=False)
-    eliminar_archivos = forms.ModelMultipleChoiceField(queryset=Archivo.objects.none(), required=False, widget=forms.CheckboxSelectMultiple)
-
-
-    class Meta:
-        model = Archivo
-        fields = ['archivo', 'proyecto']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        proyecto = self.instance  # Obtener la instancia de Proyecto asociada
-        self.fields['eliminar_archivos'].queryset = proyecto.planos.all() | proyecto.contratos.all()
-
-
+ 
 
 class TareaForm(forms.ModelForm):
     class Meta:

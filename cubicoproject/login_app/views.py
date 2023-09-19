@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Archivo, Proyecto, Tarea
 from .forms import ProyectoForm  # formulario
 from django.http import HttpResponseBadRequest
-from .forms import ProyectoForm, ArchivoForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.conf import settings
@@ -61,6 +60,8 @@ def detalle_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
     tareas_pendientes = Tarea.objects.filter(proyecto=proyecto, completada=False)
     tareas_completadas = Tarea.objects.filter(proyecto=proyecto, completada=True)
+    # Consulta actualizada de archivos para el proyecto
+    archivos_proyecto = proyecto.planos.all() | proyecto.contratos.all()
 
     if request.method == 'POST':
         # Comprobar si se proporcionó un título antes de crear la tarea
@@ -98,51 +99,20 @@ def detalle_proyecto(request, proyecto_id):
     return render(request, 'login_app/detalle_proyecto.html', {'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
 
 def editar_proyecto(request, proyecto_id):
-    print("La vista editar_proyecto se está ejecutando.")
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
     tareas_pendientes = Tarea.objects.filter(proyecto=proyecto, completada=False)
     tareas_completadas = Tarea.objects.filter(proyecto=proyecto, completada=True)
-    
+
     if request.method == 'POST':
         form = ProyectoForm(request.POST, instance=proyecto)
-        archivo_form = ArchivoForm(request.POST, request.FILES, instance=proyecto)
-        
-        archivos_a_eliminar = request.POST.getlist('eliminar_archivos')
-        
-        if archivos_a_eliminar:
-            for archivo_id in archivos_a_eliminar:
-                try:
-                    archivo_a_eliminar = Archivo.objects.get(id=archivo_id)
-                    
-                    # Eliminar físicamente el archivo del sistema de archivos
-                    ruta_archivo = os.path.join(settings.MEDIA_ROOT, str(archivo_a_eliminar.archivo))
-                    if os.path.exists(ruta_archivo):
-                        os.remove(ruta_archivo)
 
-                    archivo_a_eliminar.delete()
-                except Archivo.DoesNotExist:
-                    # Manejar el caso en el que el archivo no exista en la base de datos
-                    pass
-
-        if form.is_valid() and archivo_form.is_valid():
-            print("Ambos formularios son válidos.")
+        if form.is_valid():
             form.save()
-            archivo_form.save()
-            # Agregar un mensaje de impresión para depuración
-            print("Se han guardado ambos formularios correctamente.")
-        else:
-            print(form.errors)
-            print(archivo_form.errors)
-            print(request.POST)
+            return redirect('detalle_proyecto', proyecto_id=proyecto.id)
     else:
-        print("El formulario ProyectoForm NO es válido.")
         form = ProyectoForm(instance=proyecto)
-        archivos_proyecto = proyecto.planos.all() | proyecto.contratos.all()
-        archivo_form = ArchivoForm(instance=proyecto, initial={'eliminar_archivos': archivos_proyecto})
-        
-    print("Antes de la recargar.")
-    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto, 'archivo_form': archivo_form, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
 
+    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
 
 def eliminar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
@@ -161,3 +131,17 @@ def eliminar_tarea(request, tarea_id):
     tarea = get_object_or_404(Tarea, id=tarea_id)
     tarea.delete()
     return redirect('editar_proyecto', proyecto_id=tarea.proyecto.id)
+
+def eliminar_archivo(request, archivo_id):
+    archivo = get_object_or_404(Archivo, id=archivo_id)
+    
+    # Eliminar físicamente el archivo del sistema de archivos
+    ruta_archivo = os.path.join(settings.MEDIA_ROOT, str(archivo.archivo))
+    if os.path.exists(ruta_archivo):
+        os.remove(ruta_archivo)
+
+    # Eliminar la entrada del archivo de la base de datos
+    archivo.delete()
+    
+    # Redirigir de nuevo a la vista de detalles
+    return HttpResponseRedirect(reverse('detalle_proyecto', args=[archivo.proyecto.id]))

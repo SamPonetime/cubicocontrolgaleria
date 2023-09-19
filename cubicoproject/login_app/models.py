@@ -3,9 +3,25 @@ import os
 from datetime import datetime
 
 
-
 # Create your models here.
 
+# Definir primero la clase Proyecto
+class Proyecto(models.Model):
+    nombre = models.CharField(max_length=100)
+    ubicacion = models.CharField(max_length=100)
+    cliente = models.CharField(max_length=100)
+    presupuesto = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField()
+    
+    # Campos para planos y contratos
+    planos = models.ManyToManyField('Archivo', related_name='proyectos_planos', blank=True) 
+    contratos = models.ManyToManyField('Archivo', related_name='proyectos_contratos', blank=True) 
+
+    def __str__(self):
+        return self.nombre
+
+# Definir luego la clase Archivo
 def archivo_ruta(instance, filename):
     # Obtener la extensión del archivo original
     file_extension = filename.split('.')[-1]
@@ -13,7 +29,7 @@ def archivo_ruta(instance, filename):
     # Obtener el id del proyecto desde la instancia del archivo
     proyecto_id = instance.proyecto.id
     
-    # Generar un nombre de archivo único basado en el fecha y hora actual
+    # Generar un nombre de archivo único basado en la fecha y hora actual
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     archivo_nombre = f"{timestamp}.{file_extension}"
     
@@ -22,27 +38,12 @@ def archivo_ruta(instance, filename):
     
     return ruta
 
-
 class Archivo(models.Model):
+    proyecto = models.ForeignKey(Proyecto, related_name='archivos', on_delete=models.CASCADE, null=True, blank=True)
     archivo = models.FileField(upload_to=archivo_ruta)
-    
 
     def __str__(self):
         return self.archivo.name
-    
-class Proyecto(models.Model):
-    nombre = models.CharField(max_length=100)
-    ubicacion = models.CharField(max_length=100)
-    cliente = models.CharField(max_length=100)
-    presupuesto = models.DecimalField(max_digits=10, decimal_places=2)
-    fecha_inicio = models.DateField()
-    fecha_fin = models.DateField()
- # Campos para planos y contratos
-    planos = models.ManyToManyField('Archivo', related_name='proyectos_planos', blank=True) 
-    contratos = models.ManyToManyField('Archivo', related_name='proyectos_contratos', blank=True) 
-   
-    def __str__(self):
-        return self.nombre
 
 
 #tareas dentro de cada proyecto

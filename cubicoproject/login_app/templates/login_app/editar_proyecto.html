@@ -65,35 +65,6 @@
             {% endfor %}
         </ul>
         
-          <h2>Planos a eliminar</h2>
-            <ul class="archivos-list">
-              {% for archivo in proyecto.planos.all %}
-                <li>
-                  <span class="archivo-icon">📁</span>
-                  <label class="checkbox-label">
-                    <input type="checkbox" class="archivo-checkbox" name="eliminar_archivos" value="{{ archivo.id }}">
-                    {{ archivo.archivo.name }}
-                  </label>
-                   {% if archivo_form.errors.archivo %}
-                      <span class="error-message">{{ archivo_form.errors.archivo }}</span>
-                   {% endif %}
-                </li>
-              {% endfor %}
-            </ul>
-         <h2>Contratos a eliminar</h2>
-        <ul class="archivos-list">
-          {% for archivo in proyecto.contratos.all %}
-            <li>
-              <span class="archivo-icon">📁</span>
-              <input type="checkbox" name="eliminar_archivos" value="{{ archivo.id }}">
-              {{ archivo.archivo.name }}
-              {% if archivo_form.errors.archivo %}
-                <span class="error-message">{{ archivo_form.errors.archivo }}</span>
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-        
         <button type="submit">Guardar Cambios</button>
     </form>
 

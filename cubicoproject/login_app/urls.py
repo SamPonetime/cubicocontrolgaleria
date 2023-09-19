@@ -37,6 +37,8 @@ urlpatterns = [
     path('marcar_completada/<int:tarea_id>/', views.marcar_tarea_completada, name='marcar_completada'),
 
     path('eliminar_tarea/<int:tarea_id>/', views.eliminar_tarea, name='eliminar_tarea'),
+    
+    path('eliminar_archivo/<int:archivo_id>/', views.eliminar_archivo, name='eliminar_archivo'),
 
 ]
  

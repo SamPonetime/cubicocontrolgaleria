@@ -210,6 +210,9 @@ button{
   border: 1px solid #ccc; /* Opcional: Agrega un borde para resaltar cada tarea */
   border-radius: 5px; /* Opcional: Agrega esquinas redondeadas */
   overflow: hidden; /* Opcional: Evita que el contenido desborde el cuadro si es muy largo */
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
 }
 
 .task-description {
@@ -273,20 +276,28 @@ ul.archivos-list li .archivo-nombre:hover {
 }
 
 
-/* Estilo para el label del checkbox EDITAR.HTML */
-.checkbox-label {
-  display: flex;
-  flex-direction:row-reverse;
-  align-items: center; 
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  margin-left: 10px; 
-  font-size: 1.4rem;
-  gap: 1rem;
+/*para "Eliminar" a un costado de listado*/
+.eliminar_enlace{
+        color:red; /* Cambia el color del enlace a rojo */
+        text-decoration:none;
+        margin: 4px;
+}
+.eliminar_enlace:hover{
+  color:#cf2424; /* Cambia el color del enlace a rojo */
+  text-decoration:underline;
+}
+/*Para lista de tareas*/
+.eliminar-tarea
+{
+  color: #007bff;
+  text-decoration:none;
+}
+.eliminar-tarea:hover
+{
+  color: #1267c1;
+  text-decoration:underline;
 }
 
-/* Estilo para el checkbox */
-.archivo-checkbox {
-  width: 20px;  
-  height: 20px;  
-  margin: 0;  
+input[type="checkbox"]{
+  margin-top: 10px;
 }

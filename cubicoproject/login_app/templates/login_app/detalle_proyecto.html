@@ -45,15 +45,15 @@
               <!-- Formulario para marcar tareas como completadas -->
               <form method="post" action="{% url 'marcar_completada' tarea.id %}">
                 {% csrf_token %}
-                <input type="checkbox" name="tarea_{{ tarea.id }}" {% if tarea.completada %}checked{% endif %} onchange="this.form.submit()">
                 <div class="task">
                   <div class="task-title">{{ tarea.titulo }}</div>
                   <div class="task-description">{{ tarea.descripcion }}</div>
                   <div class="task-finaldate">{{ tarea.fecha_vencimiento }}</div>
+                  <input type="checkbox" name="tarea_{{ tarea.id }}" {% if tarea.completada %}checked{% endif %} onchange="this.form.submit()">
                 </div>
               </form>
             </li>
-            {% endfor %}
+          {% endfor %}
           </ul>
         </div>
         <div class="task-column">
@@ -93,7 +93,8 @@
             <li>
               <span class="archivo-icon">📁</span> <!-- Icono de archivo -->
               <a href="{{ plano.archivo.url }}" target="_blank" class="archivo-nombre">{{ plano.archivo.name }}</a>
-            </li>
+              <a class="eliminar_enlace" href="{% url 'eliminar_archivo' plano.id %}">Eliminar</a> <!-- enlace para eliminar el archivo -->
+           </li>
           {% empty %}
             <p>No se han subido planos para este proyecto.</p>
           {% endfor %}
@@ -105,6 +106,7 @@
             <li>
               <span class="archivo-icon">📁</span> <!-- Icono de archivo -->
               <a href="{{ contrato.archivo.url }}" target="_blank" class="archivo-nombre">{{ contrato.archivo.name }}</a>
+              <a class="eliminar_enlace" href="{% url 'eliminar_archivo' contrato.id %}">Eliminar</a> <!-- enlace para eliminar el archivo -->
             </li>
           {% empty %}
             <p>No se han subido contratos para este proyecto.</p>
