@@ -102,17 +102,34 @@ def editar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
     tareas_pendientes = Tarea.objects.filter(proyecto=proyecto, completada=False)
     tareas_completadas = Tarea.objects.filter(proyecto=proyecto, completada=True)
+    archivos_proyecto = proyecto.planos.all() | proyecto.contratos.all()
 
     if request.method == 'POST':
         form = ProyectoForm(request.POST, instance=proyecto)
 
         if form.is_valid():
-            form.save()
-            return redirect('detalle_proyecto', proyecto_id=proyecto.id)
+            # Guarda la información actualizada del proyecto sin eliminar los archivos asociados
+            proyecto_actualizado = form.save(commit=False)
+            proyecto_actualizado.save()
+
+            # Maneja la carga de archivos de planos y contratos si se proporcionan nuevos archivos
+            for archivo_plano in request.FILES.getlist('planos'):
+                nuevo_plano = Archivo(archivo=archivo_plano)
+                nuevo_plano.proyecto = proyecto_actualizado
+                nuevo_plano.save()
+                proyecto_actualizado.planos.add(nuevo_plano)
+            
+            for archivo_contrato in request.FILES.getlist('contratos'):
+                nuevo_contrato = Archivo(archivo=archivo_contrato)
+                nuevo_contrato.proyecto = proyecto_actualizado
+                nuevo_contrato.save()
+                proyecto_actualizado.contratos.add(nuevo_contrato)
+
+            return redirect('detalle_proyecto', proyecto_id=proyecto_actualizado.id)
     else:
         form = ProyectoForm(instance=proyecto)
 
-    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas})
+    return render(request, 'login_app/editar_proyecto.html', {'form': form, 'proyecto': proyecto, 'tareas_pendientes': tareas_pendientes, 'tareas_completadas': tareas_completadas, 'archivos_proyecto': archivos_proyecto})
 
 def eliminar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
