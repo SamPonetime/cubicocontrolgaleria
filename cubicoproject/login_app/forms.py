@@ -6,10 +6,6 @@ class ProyectoForm(forms.ModelForm):
         model = Proyecto
         fields = '__all__'
  
- 
-
-
- 
 
 class TareaForm(forms.ModelForm):
     class Meta:
