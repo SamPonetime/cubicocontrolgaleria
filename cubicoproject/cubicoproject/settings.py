@@ -87,8 +87,8 @@ DATABASES = {
         'NAME': 'ProyeGale', #DB NAME
         'USER': 'postgres',
         'PASSWORD': 'administrador17',
-        'HOST':'db',
-       # 'HOST':'127.0.0.1',
+        #'HOST':'db',
+        'HOST':'127.0.0.1',
         'DATABASE_PORT': '5432',
 
 
