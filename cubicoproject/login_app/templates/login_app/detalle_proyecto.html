@@ -4,8 +4,7 @@
 <head>
     <title>Detalle de Proyecto</title>
     <link rel="stylesheet" type="text/css" href="{% static 'controlstyle.css' %}">
-    <link rel="stylesheet" href="{% static 'controlstyledesktop.css' %}"  media="screen and (min-width: 600px)"> <!-- Estilos para pantallas más grandes -->
-</head>
+ </head>
 <body>
     <h1>Detalle del Proyecto</h1>
  <div class="project-initials">
@@ -24,7 +23,7 @@
 </div>
     <h2>Agregar Tarea</h2>
     <!-- Formulario para agregar nueva tarea -->
-    <article class="form-group">
+    <article class="form-groupdetails">
         <form method="post" action="">
             {% csrf_token %}
             <label for="titulo">Título:</label>

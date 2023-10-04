@@ -58,6 +58,8 @@
 
  .form-group {
     margin-bottom: 10px;
+    width: 100%;
+
   }
   
   .form-group label {
@@ -74,6 +76,27 @@
     box-sizing: border-box;
   }
 
+  .form-groupdetails{
+    margin-bottom: 10px;
+    width: 60%;
+  }
+
+  .form-groupdetails label {
+  
+    margin-bottom: 5px;
+  }
+  
+  .form-groupdetails input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+
+
 button{
 
     background: #2f3031;
@@ -88,7 +111,7 @@ button{
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  align-items: baseline;
+  align-items: center;
   gap: 6px;
   margin-bottom: 10px;
 }
@@ -183,6 +206,38 @@ button{
 }
 
 
+/*  CSS Grid para dividir la pantalla en dos columnas */
+.task-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* de igual tamaño */
+  gap: 20px; 
+  margin-bottom: 15px;
+}
+
+/* para cada columna de tareas */
+.task-column {
+  padding: 10px;
+  background-color: #f0f0f0; 
+  border-radius: 5px;
+}
+
+/* encabezados de las columnas */
+.task-column h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/*para la lista de tareas */
+.task-list {
+  list-style: none; 
+  padding: 0;
+}
+
+/*fondo de las tareas completadas */
+.task-column:nth-child(2) {
+  background-color: #ebebeb;
+}
 
 /* Aplicar un borde izquierdo a los elementos <li> */
 .task-list li {
@@ -223,7 +278,7 @@ button{
 
 .nav-button{   /* Nav en vista detalles */
     display:flex;
-    flex-direction:column-reverse;
+    flex-direction:row-reverse;
     gap:3px;
 }
 
